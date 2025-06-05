@@ -7,6 +7,7 @@ A personal C#/.NET framework lab for reusable, modular, and extensible engineeri
 
 ## 🗂️ Solution Structure
 
+~~~
 YYCSharpLab/
 ├─ Applications/ # 範例/測試應用程式
 │ ├─ Project_ImageViewer
@@ -24,7 +25,7 @@ YYCSharpLab/
 ├─ SharedResources/ # 共用資源（圖示、配置檔等）
 ├─ Tests/ # 測試專案
 └─ YYCSharpLab.sln
-
+~~~
 
 ---
 
