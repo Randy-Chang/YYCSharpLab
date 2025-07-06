@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressionUtilities", "Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{A312CAB1-FC54-42FC-AA30-26758CDA0EB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFramework", "UIFramework\UIFramework.csproj", "{BB647DF0-DAAA-499D-9058-84A7647DB133}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{A312CAB1-FC54-42FC-AA30-26758CDA0EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A312CAB1-FC54-42FC-AA30-26758CDA0EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A312CAB1-FC54-42FC-AA30-26758CDA0EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB647DF0-DAAA-499D-9058-84A7647DB133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB647DF0-DAAA-499D-9058-84A7647DB133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB647DF0-DAAA-499D-9058-84A7647DB133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB647DF0-DAAA-499D-9058-84A7647DB133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{45CAFD35-580E-4B18-A7CE-7663DB8A79AC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0B24DE14-3DC1-4FC6-AA20-7B89EACEB353} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A312CAB1-FC54-42FC-AA30-26758CDA0EB3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BB647DF0-DAAA-499D-9058-84A7647DB133} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E61D2249-DC44-46AA-9627-C1E50E6C1A88}
