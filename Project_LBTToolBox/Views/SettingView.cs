@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_LBTToolBox.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Project_LBTToolBox
+namespace Project_LBTToolBox.Views
 {
-    public partial class MainForm : Form
+    public partial class SettingView : UserControl
     {
-        public MainForm()
+        ISettingViewPack _pack;
+        public SettingView(ISettingViewPack pack)
         {
             InitializeComponent();
+            _pack = pack;
         }
     }
 }

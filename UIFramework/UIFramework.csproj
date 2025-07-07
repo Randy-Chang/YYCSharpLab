@@ -60,6 +60,9 @@
     <Compile Include="Core\ViewRouteMap.cs" />
     <Compile Include="Extensions\JsonThemeLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewHost\DefaultThemeColorProvider.cs" />
+    <Compile Include="ViewHost\IThemeColorProvider.cs" />
+    <Compile Include="ViewHost\ViewHostManager.cs" />
     <Compile Include="WinFormsAdapter\FlatButtonStyler.cs" />
     <Compile Include="WinFormsAdapter\WinFormsPresenter.cs" />
   </ItemGroup>

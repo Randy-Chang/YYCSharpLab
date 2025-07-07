@@ -1,4 +1,4 @@
-﻿namespace Project_LBTToolBox
+﻿namespace Project_LBTToolBox.Views
 {
     partial class MainForm
     {
@@ -30,11 +30,16 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelView = new System.Windows.Forms.Panel();
+            this.btnChipIdCorrection = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.btnSetting);
+            this.panelMenu.Controls.Add(this.btnChipIdCorrection);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -51,6 +56,30 @@
             this.panelView.Size = new System.Drawing.Size(1182, 773);
             this.panelView.TabIndex = 1;
             // 
+            // btnChipIdCorrection
+            // 
+            this.btnChipIdCorrection.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnChipIdCorrection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChipIdCorrection.ForeColor = System.Drawing.Color.White;
+            this.btnChipIdCorrection.Location = new System.Drawing.Point(0, 0);
+            this.btnChipIdCorrection.Name = "btnChipIdCorrection";
+            this.btnChipIdCorrection.Size = new System.Drawing.Size(289, 80);
+            this.btnChipIdCorrection.TabIndex = 0;
+            this.btnChipIdCorrection.Text = "Chip ID Correction";
+            this.btnChipIdCorrection.UseVisualStyleBackColor = true;
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.ForeColor = System.Drawing.Color.White;
+            this.btnSetting.Location = new System.Drawing.Point(289, 0);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(166, 80);
+            this.btnSetting.TabIndex = 1;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -62,6 +91,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +100,8 @@
 
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelView;
+        private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.Button btnChipIdCorrection;
     }
 }
 
