@@ -17,6 +17,7 @@ namespace Project_LBTToolBox.Scopes
             mainForm = new MainForm(new MainFormPack());
             mainForm.BtnChipIdCorrection.Click += (s, e) => ShowChipIdCorrection();
             mainForm.BtnSetting.Click += (s, e) => ShowSetting();
+            mainForm.Text = versionDate;
 
             InitializeViewHost();
             ShowChipIdCorrection();

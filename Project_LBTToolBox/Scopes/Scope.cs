@@ -8,6 +8,8 @@ namespace Project_LBTToolBox.Scopes
 {
     public partial class Scope
     {
+        static string versionDate = "LBT Tool Box 2025-07-08-1";
+
         public Scope() 
         {
             InitializeLogger();

@@ -19,6 +19,8 @@ namespace Project_LBTToolBox.Views
             InitializeComponent();
 
             _pack = pack;
+
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }
