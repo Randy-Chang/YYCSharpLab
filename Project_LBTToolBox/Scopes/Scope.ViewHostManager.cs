@@ -14,15 +14,10 @@ namespace Project_LBTToolBox.Scopes
         static ViewHostManager viewHostManager;
         Color defaultButtonBackColor = Color.FromArgb(0, 37, 85);
         Color defaultButtonForeColor = Color.White;
-        List<string> colors = new List<string>
-        {
-            "#3F51B5"
-        };
 
         private void InitializeViewHost()
         {
             viewHostManager = new ViewHostManager(mainForm.PanelView, mainForm.PanelMenu,
-                                                    new DefaultThemeColorProvider(colors),
                                                     defaultButtonBackColor,
                                                     defaultButtonForeColor);
 

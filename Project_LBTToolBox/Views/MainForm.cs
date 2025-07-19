@@ -1,7 +1,6 @@
 ﻿using Project_LBTToolBox.Interfaces;
 using System;
 using System.Windows.Forms;
-using YYCSharpLab.UIFramework.Core;
 
 namespace Project_LBTToolBox.Views
 {

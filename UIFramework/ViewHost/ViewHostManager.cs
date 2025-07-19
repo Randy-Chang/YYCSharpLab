@@ -15,14 +15,11 @@ namespace SoftwareUpdater.Utilities.ViewHost
     {
         private readonly Panel _viewPanel;
         private readonly Panel _menuPanel;
-        private readonly IThemeColorProvider _themeColorProvider;
         private readonly Color _defaultBackColor;
         private readonly Color _defaultForeColor;
 
         private UserControl _currentView;
         private Button _currentButton;
-        private readonly Random _random = new Random();
-        private int _lastColorIndex = -1;
 
         private readonly string _fontFamily = "Microsoft JhengHei";
         private readonly float _buttonFontSize = 14f;
@@ -34,13 +31,11 @@ namespace SoftwareUpdater.Utilities.ViewHost
         public ViewHostManager(
             Panel viewPanel,
             Panel menuPanel,
-            IThemeColorProvider themeColorProvider,
             Color defaultButtonBackColor,
             Color defaultButtonForeColor)
         {
             _viewPanel = viewPanel;
             _menuPanel = menuPanel;
-            _themeColorProvider = themeColorProvider;
             _defaultBackColor = defaultButtonBackColor;
             _defaultForeColor = defaultButtonForeColor;
         }
@@ -104,24 +99,7 @@ namespace SoftwareUpdater.Utilities.ViewHost
         /// </summary>
         private Color SelectThemeColor()
         {
-            var colors = _themeColorProvider.ColorList;
-            if (colors.Count == 0)
-                throw new InvalidOperationException("Color list cannot be empty.");
-
-            if (colors.Count == 1)
-            {
-                _lastColorIndex = 0;
-                return ColorTranslator.FromHtml(colors[0]);
-            }
-
-            int index;
-            do
-            {
-                index = _random.Next(colors.Count);
-            } while (index == _lastColorIndex);
-
-            _lastColorIndex = index;
-            return ColorTranslator.FromHtml(colors[index]);
+            return ColorTranslator.FromHtml("#3F51B5");
         }
     }
 
