@@ -4,26 +4,32 @@ using System.Linq;
 using UIFramework.Theming;
 
 
-namespace UIFramework.Core
+namespace UIFramework.Theming
 {
     /// <summary>
-    /// 提供主題管理與事件通知的介面。
+    /// 定義主題管理器的功能，負責管理應用程式主題並發送變更通知。
     /// </summary>
     public interface IThemeManager
     {
         /// <summary>
-        /// 目前使用的主題。
+        /// 目前的主題。
         /// </summary>
         Theme CurrentTheme { get; }
 
         /// <summary>
-        /// 設定新的主題並觸發通知。
+        /// 設定新的主題。
         /// </summary>
-        /// <param name="theme">要套用的新主題。</param>
+        /// <param name="theme">新的主題設定。</param>
         void SetTheme(Theme theme);
 
         /// <summary>
-        /// 當主題變更時觸發，通知訂閱者更新 UI。
+        /// 根據主題類型設定預設主題。
+        /// </summary>
+        /// <param name="type">預設主題類型。</param>
+        void SetTheme(ThemeType type);
+
+        /// <summary>
+        /// 當主題變更時觸發，傳遞新的主題物件。
         /// </summary>
         event Action<Theme> ThemeChanged;
     }

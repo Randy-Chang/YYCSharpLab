@@ -62,6 +62,8 @@
     <Compile Include="Theming\Theme.cs" />
     <Compile Include="Theming\ThemeApplicator.cs" />
     <Compile Include="Theming\ThemeManager.cs" />
+    <Compile Include="Theming\ThemePresets.cs" />
+    <Compile Include="Theming\ThemeType.cs" />
     <Compile Include="ViewHost\DefaultThemeColorProvider.cs" />
     <Compile Include="ViewHost\IThemeColorProvider.cs" />
     <Compile Include="ViewHost\ViewHostManager.cs" />

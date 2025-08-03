@@ -13,7 +13,6 @@ using Project_UIFrameworkDemo.Views;
 namespace Project_UIFrameworkDemo
 {
 
-
     public partial class MainForm : Form
     {
         private readonly IViewHost _viewHost;
@@ -45,10 +44,10 @@ namespace Project_UIFrameworkDemo
             // 初始化 Menu
             _menuController.Initialize(panelMenu);
             _menuController.SetMenuMappings(new Dictionary<string, string>
-        {
-            { "btnHome", "Home" },
-            { "btnSettings", "Settings" }
-        });
+            {
+                { "btnHome", "Home" },
+                { "btnSettings", "Settings" }
+            });
 
             // 綁定事件
             _menuController.MenuItemSelected += key => _viewHost.Switch(key);
@@ -59,10 +58,7 @@ namespace Project_UIFrameworkDemo
             };
 
             // 還原主題
-            if (_settings.ThemeName == "Dark")
-                _themeManager.SetTheme(DarkTheme());
-            else
-                _themeManager.SetTheme(DefaultTheme());
+            _themeManager.SetTheme(ThemeType.Default);
 
             // 還原頁面
             _viewHost.Switch(_settings.LastOpenedView);
@@ -72,37 +68,16 @@ namespace Project_UIFrameworkDemo
 
             btnThemeSwitch.Click += (s, e) =>
             {
-                if (_themeManager.CurrentTheme.Name == "Default")
-                {
-                    _themeManager.SetTheme(DarkTheme());
-                    _settings.ThemeName = "Dark";
-                }
+                if (_themeManager.CurrentTheme.Type == ThemeType.Default)
+                    _themeManager.SetTheme(ThemeType.Dark);
+                else if (_themeManager.CurrentTheme.Type == ThemeType.Dark)
+                    _themeManager.SetTheme(ThemeType.Light);
                 else
-                {
-                    _themeManager.SetTheme(DefaultTheme());
-                    _settings.ThemeName = "Default";
-                }
+                    _themeManager.SetTheme(ThemeType.Default);
             };
 
             this.FormClosing += (s, e) => _settingsProvider.Save(_settings);
         }
 
-
-        private Theme DefaultTheme() => new Theme
-        {
-            Name = "Default",
-            BackgroundColor = Color.FromArgb(0, 37, 85),
-            ForegroundColor = Color.White,
-            DefaultFont = new Font("Arial", 10, FontStyle.Bold)
-        };
-
-        private Theme DarkTheme() => new Theme
-        {
-            Name = "Dark",
-            BackgroundColor = Color.Black,
-            ForegroundColor = Color.White,
-            DefaultFont = new Font("Arial", 10, FontStyle.Bold)
-        };
     }
-
 }
