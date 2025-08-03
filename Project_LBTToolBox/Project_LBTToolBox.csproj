@@ -59,6 +59,7 @@
     <Compile Include="Scopes\Scope.MainForm.cs" />
     <Compile Include="Scopes\Scope.Setting.cs" />
     <Compile Include="Scopes\Scope.SettingView.cs" />
+    <Compile Include="Scopes\Scope.UIFramework.cs" />
     <Compile Include="Scopes\Scope.ViewHostManager.cs" />
     <Compile Include="Services\ChipIdCorrection\ChipRecord.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IUIFeedback.cs" />

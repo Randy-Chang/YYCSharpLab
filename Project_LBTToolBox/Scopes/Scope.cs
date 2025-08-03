@@ -18,8 +18,12 @@ namespace Project_LBTToolBox.Scopes
             InitializeLotFileDisplayService();
 
             InitializeChipIdCorrectionView();
-            INITializeSettingView();
+            InitializeSettingView();
+
+            
             InitializeMainForm();
+
+            InitializeUIFramework();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Project_LBTToolBox.Scopes
     {
         static SettingView settingView;
 
-        void INITializeSettingView()
+        void InitializeSettingView()
         {
             settingView = new SettingView(new SettingViewPack());
         }

@@ -15,8 +15,8 @@ namespace Project_LBTToolBox.Scopes
         void InitializeMainForm()
         {
             mainForm = new MainForm(new MainFormPack());
-            mainForm.BtnChipIdCorrection.Click += (s, e) => ShowChipIdCorrection();
-            mainForm.BtnSetting.Click += (s, e) => ShowSetting();
+            //mainForm.BtnChipIdCorrection.Click += (s, e) => ShowChipIdCorrection();
+            //mainForm.BtnSetting.Click += (s, e) => ShowSetting();
             mainForm.Text = versionDate;
 
             InitializeViewHost();
@@ -25,12 +25,12 @@ namespace Project_LBTToolBox.Scopes
 
         void ShowChipIdCorrection()
         {
-            viewHostManager.ShowUserControl(Scope.chipIdCorrectionView, mainForm.BtnChipIdCorrection);
+            //viewHostManager.ShowUserControl(Scope.chipIdCorrectionView, mainForm.BtnChipIdCorrection);
         }
 
         void ShowSetting()
         {
-            viewHostManager.ShowUserControl(Scope.settingView, mainForm.BtnSetting);
+            //viewHostManager.ShowUserControl(Scope.settingView, mainForm.BtnSetting);
         }
     }
 
