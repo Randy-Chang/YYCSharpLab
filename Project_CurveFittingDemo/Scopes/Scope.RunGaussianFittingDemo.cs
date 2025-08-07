@@ -34,7 +34,7 @@ namespace Project_CurveFittingDemo.Scopes
             {
                 ("Caruana", EGaussianAlgorithm.Caruana),
                 ("Guo", EGaussianAlgorithm.Guo),
-                ("TwoPoint", Tuple.Create(EGaussianAlgorithm.TwoPoint, 0.5))
+                ("TwoPoint", EGaussianAlgorithm.TwoPoint)
             };
 
             // 3. 加入 Gaussian 曲線
@@ -51,7 +51,7 @@ namespace Project_CurveFittingDemo.Scopes
             // 4. Hyperbolic 擬合策略清單
             var strategiesHyperbolic = new List<(string name, object alg)>
             {
-                ("SechSquared", Tuple.Create(EHyperbolicAlgorithm.SechSquared, 0.567)),
+                ("SechSquared", EHyperbolicAlgorithm.SechSquared),
             };
 
             // 5. 加入 Hyperbolic 曲線

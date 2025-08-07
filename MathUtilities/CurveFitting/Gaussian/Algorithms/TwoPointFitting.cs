@@ -14,7 +14,7 @@ namespace MathUtilities.Algorithms
         /// <summary>
         /// 振幅比例（預設為 0.5）
         /// </summary>
-        public double AmpRatio { get; set; } = 0.5;
+        public double AmpRatio { get; set; } = 0.1;
 
         public GaussianParameter Fit(double[] x, double[] y)
         {
