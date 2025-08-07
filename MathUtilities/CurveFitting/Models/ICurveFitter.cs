@@ -1,11 +1,11 @@
-﻿using MathUtilities.CurveFitting.Models;
+﻿using MathUtilities.CurveFitting.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathUtilities.CurveFitting
+namespace MathUtilities.CurveFitting.Models
 {
     public interface ICurveFitter
     {

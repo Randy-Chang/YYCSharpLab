@@ -1,4 +1,4 @@
-﻿using MathUtilities.CurveFitting.Models;
+﻿using MathUtilities.CurveFitting.Factory;
 
 namespace MathUtilities.CurveFitting.Gaussian
 {

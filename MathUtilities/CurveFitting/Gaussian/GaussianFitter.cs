@@ -1,5 +1,4 @@
-﻿using MathUtilities.Algorithms;
-using MathUtilities.CurveFitting.Models;
+﻿using MathUtilities.CurveFitting.Models;
 using System;
 
 namespace MathUtilities.CurveFitting.Gaussian

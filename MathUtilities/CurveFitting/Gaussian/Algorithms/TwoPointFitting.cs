@@ -11,19 +11,10 @@ namespace MathUtilities.Algorithms
     /// </summary>
     public class TwoPointFitting : IGaussianFitting
     {
-        private readonly double _ampRatio;
-
         /// <summary>
-        /// 使用兩點法擬合高斯分佈
+        /// 振幅比例（預設為 0.5）
         /// </summary>
-        /// <param name="ampRatio">振幅比例（建議 0.5）</param>
-        public TwoPointFitting(double ampRatio = 0.5)
-        {
-            if (ampRatio <= 0 || ampRatio >= 1)
-                throw new ArgumentOutOfRangeException(nameof(ampRatio), "Amp ratio must be between 0 and 1.");
-
-            _ampRatio = ampRatio;
-        }
+        public double AmpRatio { get; set; } = 0.5;
 
         public GaussianParameter Fit(double[] x, double[] y)
         {
@@ -36,7 +27,7 @@ namespace MathUtilities.Algorithms
             var yList = new List<double>(y);
 
             GaussianParameter result;
-            TwoPointMethod(xList, yList, _ampRatio, out result);
+            TwoPointMethod(xList, yList, AmpRatio, out result);
             return result;
         }
 

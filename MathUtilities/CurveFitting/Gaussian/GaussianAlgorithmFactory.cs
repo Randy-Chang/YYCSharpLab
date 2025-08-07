@@ -19,8 +19,8 @@ namespace MathUtilities.CurveFitting.Gaussian
                     return new GuosAlgorithmFitting();
 
                 case EGaussianAlgorithm.TwoPoint:
-                    double ampRatio = options is double r ? r : 0.5;
-                    return new TwoPointFitting(ampRatio);
+                    double ratio = (options is double d) ? d : 0.5;
+                    return new TwoPointFitting { AmpRatio = ratio };
 
                 default:
                     throw new NotSupportedException($"Algorithm '{algorithm}' is not supported.");
