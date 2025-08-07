@@ -41,13 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurveFitting\GaussianFittingAlgorithm\CaruanasAlgorithmFitting.cs" />
-    <Compile Include="CurveFitting\GaussianParameter.cs" />
-    <Compile Include="CurveFitting\GaussianFittingAlgorithm\GuosAlgorithmFitting.cs" />
-    <Compile Include="CurveFitting\IGaussianFitting.cs" />
-    <Compile Include="CurveFitting\GaussianFittingFactory.cs" />
-    <Compile Include="CurveFitting\GaussianFittingAlgorithm\TwoPointFitting.cs" />
-    <Compile Include="MathUtils.cs" />
+    <Compile Include="CurveFitting\CurveFittingFactory.cs" />
+    <Compile Include="CurveFitting\ECurveType.cs" />
+    <Compile Include="CurveFitting\Gaussian\Algorithms\CaruanasAlgorithmFitting.cs" />
+    <Compile Include="CurveFitting\Gaussian\Algorithms\Referance.cs" />
+    <Compile Include="CurveFitting\Gaussian\EGaussianAlgorithm.cs" />
+    <Compile Include="CurveFitting\Gaussian\GaussianAlgorithmFactory.cs" />
+    <Compile Include="CurveFitting\Gaussian\GaussianFitter.cs" />
+    <Compile Include="CurveFitting\Gaussian\GaussianParameter.cs" />
+    <Compile Include="CurveFitting\Gaussian\Algorithms\GuosAlgorithmFitting.cs" />
+    <Compile Include="CurveFitting\Gaussian\IGaussianFitting.cs" />
+    <Compile Include="CurveFitting\Gaussian\Algorithms\TwoPointFitting.cs" />
+    <Compile Include="Common\MathUtils.cs" />
+    <Compile Include="CurveFitting\ICurveFitter.cs" />
+    <Compile Include="CurveFitting\Models\CurveParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

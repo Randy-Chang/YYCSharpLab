@@ -1,10 +1,9 @@
-﻿using System;
+﻿using MathUtilities.CurveFitting.Gaussian;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MathUtilities.CurveFitting
+
+namespace MathUtilities.Algorithms
 {
     /// <summary>
     /// 使用 Caruana's Algorithm 擬合高斯分佈
@@ -12,24 +11,23 @@ namespace MathUtilities.CurveFitting
     public class CaruanasAlgorithmFitting : IGaussianFitting
     {
         #region 實作IGaussianFitting
-        /// <summary>
-        /// 執行高斯擬合
-        /// </summary>
-        /// <param name="xData">X 軸數據</param>
-        /// <param name="yData">Y 軸數據</param>
-        /// <param name="gaussianParameter">輸出的高斯參數</param>
-        public void Fit(List<double> xData, List<double> yData, out GaussianParameter gaussianParameter)
+        public GaussianParameter Fit(double[] x, double[] y)
         {
-            CARUANAS_ALGORITHM(xData, yData, out gaussianParameter);
-        }
+            if (x == null || y == null)
+                throw new ArgumentNullException("Input arrays cannot be null.");
 
-        /// <summary>
-        /// 設定振幅比例條件（目前未實作）
-        /// </summary>
-        /// <param name="ampRatio">振幅比例</param>
-        public void InputAmpRatioConditionByTwoPoint(double ampRatio)
-        {
+            if (x.Length != y.Length)
+                throw new ArgumentException("Input arrays must be of the same length.");
 
+            if (x.Length < 3)
+                throw new ArgumentException("At least 3 data points are required for fitting.");
+
+            var xList = new List<double>(x);
+            var yList = new List<double>(y);
+
+            GaussianParameter result;
+            CARUANAS_ALGORITHM(xList, yList, out result);
+            return result;
         }
         #endregion
 
@@ -95,7 +93,12 @@ namespace MathUtilities.CurveFitting
             double sigma = Math.Sqrt(-1 / (2 * c));
             double A = Math.Exp(a - b * b / (4 * c));
 
-            gaussianParameter = new GaussianParameter { amp = A, mu = mu, sigma = sigma };
+            gaussianParameter = new GaussianParameter
+            {
+                Amplitude = A,
+                Mean = mu,
+                StdDev = sigma
+            };
         }
         #endregion
     }
