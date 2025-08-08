@@ -29,6 +29,11 @@ namespace Project_CurveFittingDemo.Scopes
 
             chart.AddCurve("Raw Data", x, y, isScatter: true);
 
+            PlotFittingCurve(chart, x, y);
+        }
+
+        private void PlotFittingCurve(IPanelChartPresenter chart, double[] x, double[] y)
+        {
             // 2. Gaussian 擬合策略清單
             var strategiesGaussian = new List<(string name, object alg)>
             {
@@ -61,7 +66,7 @@ namespace Project_CurveFittingDemo.Scopes
                     var fitter = CurveFittingFactory.CreateFitter(ECurveType.Hyperbolic, alg);
                     var resultH = fitter.Fit(x, y);
                     double[] yFit = EvaluateHyperbolic(resultH as HyperbolicParameter, x);
-                    chart.AddCurve("Hyperbolic", x, yFit);
+                    chart.AddCurve("SechSquared", x, yFit);
                 }
 
                 //var param = new HyperbolicParameter { SH = 1.0, DeltaSH = 15.0 };
