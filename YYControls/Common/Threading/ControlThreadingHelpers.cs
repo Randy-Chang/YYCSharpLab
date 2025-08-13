@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace YYCSharpLab.CustomControls
+namespace YYControls.Common.Threading
 {
     public static partial class ControlThreadingHelpers
     {

@@ -4,7 +4,7 @@ using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace YYCSharpLab.CustomControls.Dialogs
+namespace YYControls.Dialogs
 {
     #region Editor
 
@@ -16,7 +16,7 @@ namespace YYCSharpLab.CustomControls.Dialogs
         }
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            FolderBrowserDialog browser = new FolderBrowserDialog();
+            FolderPickerDialog browser = new FolderPickerDialog();
             if (value != null)
             {
                 browser.DirectoryPath = string.Format("{0}", value);
@@ -35,12 +35,12 @@ namespace YYCSharpLab.CustomControls.Dialogs
     /// </summary>
     [Description("提供一個Vista樣式的選擇文件對話框")]
     [Editor(typeof(FolderNameEditor), typeof(UITypeEditor))]
-    public class FolderBrowserDialog : Component
+    public class FolderPickerDialog : Component
     {
         /// <summary>
         /// 初始化 FolderBrowser 實例
         /// </summary>
-        public FolderBrowserDialog()
+        public FolderPickerDialog()
         {
         }
 

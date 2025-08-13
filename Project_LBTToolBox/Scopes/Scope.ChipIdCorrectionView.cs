@@ -27,7 +27,7 @@ namespace Project_LBTToolBox.Scopes
 
         void BtnBrowse_Click()
         {
-            using (YYCSharpLab.CustomControls.Dialogs.FolderBrowserDialog folderBrowserDialog = new YYCSharpLab.CustomControls.Dialogs.FolderBrowserDialog())
+            using (YYControls.Dialogs.FolderPickerDialog folderBrowserDialog = new YYControls.Dialogs.FolderPickerDialog())
             {
                 if (folderBrowserDialog.ShowDialog(mainForm) == DialogResult.OK)
                 {

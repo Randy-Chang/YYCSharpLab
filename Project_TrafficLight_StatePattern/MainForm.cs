@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using TrafficLight_FSM.StatePattern;
-using YYCSharpLab.CustomControls;
+using YYControls.Common.Threading;
 
 namespace TrafficLight_StatePattern
 {

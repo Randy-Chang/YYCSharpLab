@@ -124,10 +124,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
-      <Project>{a312cab1-fc54-42fc-aa30-26758cda0eb3}</Project>
-      <Name>CustomControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LoggingUtilities\LoggingUtilities.csproj">
       <Project>{45CAFD35-580E-4B18-A7CE-7663DB8A79AC}</Project>
       <Name>LoggingUtilities</Name>
@@ -135,6 +131,10 @@
     <ProjectReference Include="..\UIFramework\UIFramework.csproj">
       <Project>{BB647DF0-DAAA-499D-9058-84A7647DB133}</Project>
       <Name>UIFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YYControls\YYControls.csproj">
+      <Project>{6cd636a6-9da6-4251-a5f5-9e241dd46efd}</Project>
+      <Name>YYControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace YYCSharpLab.CustomControls
+namespace YYControls.Common.UI
 {
     public static class ControlHelpers
     {
