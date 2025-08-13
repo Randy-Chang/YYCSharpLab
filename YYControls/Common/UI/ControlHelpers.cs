@@ -25,9 +25,9 @@ namespace YYControls.Common.UI
 
             List<Panel> childPanels = new List<Panel>();
 
-            // 計算子 Panel 的大小
-            int panelWidth = (parentPanel.Width - (columns + 1) * spacing) / columns;
-            int panelHeight = (parentPanel.Height - (rows + 1) * spacing) / rows;
+            var client = parentPanel.ClientSize; // ← 用 ClientSize 較穩
+            int panelWidth = (client.Width - (columns + 1) * spacing) / columns;
+            int panelHeight = (client.Height - (rows + 1) * spacing) / rows;
 
             // 清空父容器中的控件
             parentPanel.Controls.Clear();
@@ -76,7 +76,7 @@ namespace YYControls.Common.UI
                 comboBox.Items.Add(value);
             }
 
-            comboBox.SelectedIndex = 0;
+            if (comboBox.Items.Count > 0) comboBox.SelectedIndex = 0;
             comboBox.MaxDropDownItems = comboBox.Items.Count;
         }
     }

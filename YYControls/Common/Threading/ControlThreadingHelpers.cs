@@ -80,7 +80,10 @@ namespace YYControls.Common.Threading
                     pgb.BeginInvoke(d, new object[] { pgb, value });
                 }
                 else
-                    pgb.Value = value;
+                {
+                    var v = Math.Max(pgb.Minimum, Math.Min(value, pgb.Maximum));
+                    pgb.Value = v;
+                }
             }
             catch (Exception e)
             {
