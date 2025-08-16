@@ -101,7 +101,7 @@ namespace YYControls.Controls.WaferMap
             get => _toolbarButtonSize;
             set { _toolbarButtonSize = Math.Max(24, Math.Min(80, value)); UpdateScaledIcons(); ApplyToolbarVisual(); }
         }
-        private int _toolbarButtonSize = 32;
+        private int _toolbarButtonSize = 36;
 
         [Category("Toolbar"), DefaultValue(20)]
         public int ToolbarIconSize
