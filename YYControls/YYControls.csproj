@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Common\Threading\ControlThreadingHelpers.cs" />
     <Compile Include="Common\UI\ControlHelpers.cs" />
+    <Compile Include="Controls\Buttons\YYButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\WaferMap\WaferMapControl.cs" />
     <Compile Include="Controls\WaferMap\WaferMapEvents.cs" />
     <Compile Include="Controls\WaferMap\WaferMapModels.cs" />
