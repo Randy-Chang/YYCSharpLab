@@ -13,8 +13,18 @@ using System.Windows.Forms;
 
 namespace YYControls.Controls.Buttons
 {
+    /// <summary>
+    /// 自訂樣式的 WinForms 按鈕（.NET Framework 4.8）
+    /// - 支援圓角、邊框、漸層背景
+    /// - 支援 Hover / Pressed / Disabled 狀態色
+    /// - 支援文字/圖片排版與 TextImageRelation
+    /// - 支援半透明背景與父層背景變更重繪
+    /// </summary>
+    [DesignerCategory("Code")]
     public class YYButton : Button
     {
+        #region === Fields ===
+
         private int _borderSize = 1;
         private int _borderRadius = 12;
         private Color _borderColor = Color.PaleVioletRed;
@@ -32,6 +42,11 @@ namespace YYControls.Controls.Buttons
         private bool _useGradient = false;
         private float _gradientAngle = 90f;
 
+        #endregion
+
+        #region === Public Properties ===
+
+        /// <summary>外框粗細（像素）。</summary>
         [Category("YY Button"), Description("外框粗細（像素）"), DefaultValue(1)]
         public int BorderSize
         {
@@ -39,6 +54,7 @@ namespace YYControls.Controls.Buttons
             set { _borderSize = Math.Max(0, value); Invalidate(); }
         }
 
+        /// <summary>圓角半徑（像素）。</summary>
         [Category("YY Button"), Description("圓角半徑（像素）"), DefaultValue(12)]
         public int BorderRadius
         {
@@ -46,6 +62,7 @@ namespace YYControls.Controls.Buttons
             set { _borderRadius = Math.Max(0, value); Invalidate(); }
         }
 
+        /// <summary>外框顏色。</summary>
         [Category("YY Button"), Description("外框顏色")]
         public Color BorderColor
         {
@@ -53,6 +70,7 @@ namespace YYControls.Controls.Buttons
             set { _borderColor = value; Invalidate(); }
         }
 
+        /// <summary>一般狀態背景色。</summary>
         [Category("YY Button"), Description("一般背景色")]
         public Color BackColorNormal
         {
@@ -60,6 +78,7 @@ namespace YYControls.Controls.Buttons
             set { _backColorNormal = value; Invalidate(); }
         }
 
+        /// <summary>滑過（Hover）背景色。</summary>
         [Category("YY Button"), Description("滑過背景色")]
         public Color BackColorHover
         {
@@ -67,6 +86,7 @@ namespace YYControls.Controls.Buttons
             set { _backColorHover = value; Invalidate(); }
         }
 
+        /// <summary>按下（Pressed）背景色。</summary>
         [Category("YY Button"), Description("按下背景色")]
         public Color BackColorPressed
         {
@@ -74,6 +94,7 @@ namespace YYControls.Controls.Buttons
             set { _backColorPressed = value; Invalidate(); }
         }
 
+        /// <summary>停用（Disabled）背景色。</summary>
         [Category("YY Button"), Description("停用背景色")]
         public Color BackColorDisabled
         {
@@ -81,6 +102,7 @@ namespace YYControls.Controls.Buttons
             set { _backColorDisabled = value; Invalidate(); }
         }
 
+        /// <summary>啟用漸層背景。</summary>
         [Category("YY Button"), Description("啟用漸層背景"), DefaultValue(false)]
         public bool UseGradient
         {
@@ -88,6 +110,7 @@ namespace YYControls.Controls.Buttons
             set { _useGradient = value; Invalidate(); }
         }
 
+        /// <summary>漸層角度（度）。</summary>
         [Category("YY Button"), Description("漸層角度（度）"), DefaultValue(90f)]
         public float GradientAngle
         {
@@ -95,6 +118,7 @@ namespace YYControls.Controls.Buttons
             set { _gradientAngle = value; Invalidate(); }
         }
 
+        /// <summary>背景色別名（同步 BackColor）。</summary>
         [Category("YY Button"), Description("背景色別名（同步 BackColor）")]
         public Color BackgroundColor
         {
@@ -102,6 +126,7 @@ namespace YYControls.Controls.Buttons
             set { this.BackColor = value; Invalidate(); }
         }
 
+        /// <summary>文字色別名（同步 ForeColor）。</summary>
         [Category("YY Button"), Description("文字色別名（同步 ForeColor）")]
         public Color TextColor
         {
@@ -109,6 +134,13 @@ namespace YYControls.Controls.Buttons
             set { this.ForeColor = value; Invalidate(); }
         }
 
+        #endregion
+
+        #region === Constructor / Dispose ===
+
+        /// <summary>
+        /// 建構式：初始化樣式、預設尺寸、滑鼠事件與 Enabled 變更重繪。
+        /// </summary>
         public YYButton()
         {
             SetStyle(ControlStyles.UserPaint |
@@ -133,21 +165,7 @@ namespace YYControls.Controls.Buttons
             EnabledChanged += (s, e) => Invalidate();
         }
 
-        protected override void OnParentChanged(EventArgs e)
-        {
-            // unsubscribe from old parent
-            if (Parent != null)
-            {
-                Parent.BackColorChanged -= Parent_BackColorChanged;
-            }
-            base.OnParentChanged(e);
-            if (Parent != null)
-            {
-                Parent.BackColorChanged += Parent_BackColorChanged;
-            }
-            Invalidate();
-        }
-
+        /// <inheritdoc/>
         protected override void Dispose(bool disposing)
         {
             if (disposing && Parent != null)
@@ -157,19 +175,52 @@ namespace YYControls.Controls.Buttons
             base.Dispose(disposing);
         }
 
+        #endregion
+
+        #region === Parent / Background Handling ===
+
+        /// <summary>
+        /// 父容器變更時重新訂閱父容器的 BackColorChanged，以確保透明背景時能正確重繪。
+        /// </summary>
+        protected override void OnParentChanged(EventArgs e)
+        {
+            if (Parent != null)
+            {
+                Parent.BackColorChanged -= Parent_BackColorChanged;
+            }
+
+            base.OnParentChanged(e);
+
+            if (Parent != null)
+            {
+                Parent.BackColorChanged += Parent_BackColorChanged;
+            }
+
+            Invalidate();
+        }
+
         private void Parent_BackColorChanged(object sender, EventArgs e) => Invalidate();
 
+        /// <summary>
+        /// 支援半透明背景：如果自身有透明度，先讓父容器幫忙繪底，再繪製自身。
+        /// </summary>
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
             if (BackColor.A < 255 && Parent != null)
             {
                 var g = pevent.Graphics;
                 var state = g.Save();
-                g.TranslateTransform(-Left, -Top);
-                PaintEventArgs pea = new PaintEventArgs(g, Parent.DisplayRectangle);
-                InvokePaintBackground(Parent, pea);
-                InvokePaint(Parent, pea);
-                g.Restore(state);
+                try
+                {
+                    g.TranslateTransform(-Left, -Top);
+                    var pea = new PaintEventArgs(g, Parent.DisplayRectangle);
+                    InvokePaintBackground(Parent, pea);
+                    InvokePaint(Parent, pea);
+                }
+                finally
+                {
+                    g.Restore(state);
+                }
             }
             else
             {
@@ -177,6 +228,13 @@ namespace YYControls.Controls.Buttons
             }
         }
 
+        #endregion
+
+        #region === Painting ===
+
+        /// <summary>
+        /// 核心繪製流程：背景（含圓角/邊框/漸層）＋ 內容（圖/文）。
+        /// </summary>
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -190,13 +248,16 @@ namespace YYControls.Controls.Buttons
             int border = _borderSize;
             float radius = _borderRadius;
 
-            var rectBorder = RectangleF.Inflate(rect, -border * 0.5f, -border * 0.5f);
+            var rectBorder = RectangleF.Inflate(RectangleF.Empty, 0, 0); // 初始化避免警告
+            rectBorder = RectangleF.Inflate(rect, -border * 0.5f, -border * 0.5f);
 
             using (var path = RoundedRect(rect, radius))
             using (var region = new Region(path))
             {
+                // 設定剪裁區域：避免邊角以外的像素被填滿
                 Region = region.Clone();
 
+                // 背景（單色或漸層）
                 Color baseColor = CurrentBackColor();
                 using (Brush b = _useGradient
                     ? (Brush)new LinearGradientBrush(rect, baseColor, ControlPaint.Light(baseColor, 0.15f), _gradientAngle)
@@ -205,6 +266,7 @@ namespace YYControls.Controls.Buttons
                     g.FillPath(b, path);
                 }
 
+                // 邊框
                 if (border > 0)
                 {
                     using (var borderPath = RoundedRect(rectBorder, Math.Max(0, radius - border * 0.5f)))
@@ -218,6 +280,9 @@ namespace YYControls.Controls.Buttons
             DrawContent(g);
         }
 
+        /// <summary>
+        /// 依目前狀態（Normal / Hover / Pressed / Disabled）回傳背景色。
+        /// </summary>
         private Color CurrentBackColor()
         {
             if (!Enabled) return _backColorDisabled;
@@ -226,35 +291,18 @@ namespace YYControls.Controls.Buttons
             return _backColorNormal;
         }
 
-        private static GraphicsPath RoundedRect(RectangleF rect, float radius)
-        {
-            var path = new GraphicsPath();
-            float r = Math.Max(0f, Math.Min(radius, Math.Min(rect.Width, rect.Height) / 2f));
-            if (r == 0f)
-            {
-                path.AddRectangle(rect);
-                path.CloseFigure();
-                return path;
-            }
-            float d = 2f * r;
-            path.StartFigure();
-            path.AddArc(rect.X, rect.Y, d, d, 180, 90);
-            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
-            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
-            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
-            path.CloseFigure();
-            return path;
-        }
-
+        /// <summary>
+        /// 繪製圖文內容（依 TextImageRelation 與對齊設定分配區域）。
+        /// </summary>
         private void DrawContent(Graphics g)
         {
             Rectangle contentRect = Rectangle.Inflate(ClientRectangle, -4, -2);
 
             var img = Image;
             var text = Text ?? string.Empty;
-
             var textColor = Enabled ? ForeColor : _textColorDisabled;
 
+            // 計算圖片矩形
             Rectangle imageRect = Rectangle.Empty;
             if (img != null)
             {
@@ -262,9 +310,10 @@ namespace YYControls.Controls.Buttons
                 imageRect = AlignWithin(contentRect, imageRect.Size, ImageAlign);
             }
 
+            // 計算文字尺寸與矩形
             Size textSize;
-            using (var tmpBmp = new Bitmap(1, 1))
-            using (var gTmp = Graphics.FromImage(tmpBmp))
+            using (var tmp = new Bitmap(1, 1))
+            using (var gTmp = Graphics.FromImage(tmp))
             {
                 textSize = Size.Ceiling(gTmp.MeasureString(text, Font));
             }
@@ -272,44 +321,78 @@ namespace YYControls.Controls.Buttons
             Rectangle textRect = new Rectangle(Point.Empty, textSize);
             textRect = AlignWithin(contentRect, textRect.Size, TextAlign);
 
+            // 根據 TextImageRelation 調整圖文相對位置
             switch (TextImageRelation)
             {
                 case TextImageRelation.ImageBeforeText:
                     if (!imageRect.IsEmpty)
                     {
-                        imageRect = new Rectangle(contentRect.Left, AlignMiddleY(contentRect, imageRect.Height), img.Width, img.Height);
-                        textRect = new Rectangle(imageRect.Right + Padding.Left, AlignMiddleY(contentRect, textRect.Height),
-                                                 Math.Min(contentRect.Right - imageRect.Right - Padding.Horizontal, textRect.Width), textRect.Height);
+                        imageRect = new Rectangle(
+                            contentRect.Left,
+                            AlignMiddleY(contentRect, imageRect.Height),
+                            imageRect.Width, imageRect.Height);
+
+                        textRect = new Rectangle(
+                            imageRect.Right + Padding.Left,
+                            AlignMiddleY(contentRect, textRect.Height),
+                            Math.Min(contentRect.Right - imageRect.Right - Padding.Horizontal, textRect.Width),
+                            textRect.Height);
                     }
                     break;
+
                 case TextImageRelation.TextBeforeImage:
                     if (!imageRect.IsEmpty)
                     {
-                        textRect = new Rectangle(contentRect.Left, AlignMiddleY(contentRect, textRect.Height),
-                                                 Math.Min(contentRect.Width - img.Width - Padding.Horizontal, textRect.Width), textRect.Height);
-                        imageRect = new Rectangle(textRect.Right + Padding.Right, AlignMiddleY(contentRect, imageRect.Height), img.Width, img.Height);
+                        textRect = new Rectangle(
+                            contentRect.Left,
+                            AlignMiddleY(contentRect, textRect.Height),
+                            Math.Min(contentRect.Width - imageRect.Width - Padding.Horizontal, textRect.Width),
+                            textRect.Height);
+
+                        imageRect = new Rectangle(
+                            textRect.Right + Padding.Right,
+                            AlignMiddleY(contentRect, imageRect.Height),
+                            imageRect.Width, imageRect.Height);
                     }
                     break;
+
                 case TextImageRelation.ImageAboveText:
                     if (!imageRect.IsEmpty)
                     {
-                        imageRect = new Rectangle(AlignMiddleX(contentRect, imageRect.Width), contentRect.Top, img.Width, img.Height);
-                        textRect = new Rectangle(AlignMiddleX(contentRect, textRect.Width), imageRect.Bottom + Padding.Top,
-                                                 textRect.Width, textRect.Height);
+                        imageRect = new Rectangle(
+                            AlignMiddleX(contentRect, imageRect.Width),
+                            contentRect.Top,
+                            imageRect.Width, imageRect.Height);
+
+                        textRect = new Rectangle(
+                            AlignMiddleX(contentRect, textRect.Width),
+                            imageRect.Bottom + Padding.Top,
+                            textRect.Width, textRect.Height);
                     }
                     break;
+
                 case TextImageRelation.TextAboveImage:
                     if (!imageRect.IsEmpty)
                     {
-                        textRect = new Rectangle(AlignMiddleX(contentRect, textRect.Width), contentRect.Top, textRect.Width, textRect.Height);
-                        imageRect = new Rectangle(AlignMiddleX(contentRect, imageRect.Width), textRect.Bottom + Padding.Top, img.Width, img.Height);
+                        textRect = new Rectangle(
+                            AlignMiddleX(contentRect, textRect.Width),
+                            contentRect.Top,
+                            textRect.Width, textRect.Height);
+
+                        imageRect = new Rectangle(
+                            AlignMiddleX(contentRect, imageRect.Width),
+                            textRect.Bottom + Padding.Top,
+                            imageRect.Width, imageRect.Height);
                     }
                     break;
+
                 case TextImageRelation.Overlay:
                 default:
+                    // 不調整，使用 AlignWithin 結果
                     break;
             }
 
+            // 繪圖
             if (img != null)
             {
                 if (Enabled)
@@ -325,9 +408,30 @@ namespace YYControls.Controls.Buttons
             }
         }
 
-        private static int AlignMiddleY(Rectangle outer, int h) => outer.Top + (outer.Height - h) / 2;
-        private static int AlignMiddleX(Rectangle outer, int w) => outer.Left + (outer.Width - w) / 2;
+        #endregion
 
+        #region === Layout Helpers ===
+
+        /// <summary>回傳文字的 StringFormat（水平/垂直對齊）。</summary>
+        private static StringFormat GetStringFormat(ContentAlignment align)
+        {
+            var sf = new StringFormat(StringFormatFlags.NoWrap);
+            switch (align)
+            {
+                case ContentAlignment.TopLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Near; break;
+                case ContentAlignment.TopCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Near; break;
+                case ContentAlignment.TopRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Near; break;
+                case ContentAlignment.MiddleLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Center; break;
+                case ContentAlignment.MiddleCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Center; break;
+                case ContentAlignment.MiddleRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Center; break;
+                case ContentAlignment.BottomLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Far; break;
+                case ContentAlignment.BottomCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Far; break;
+                case ContentAlignment.BottomRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Far; break;
+            }
+            return sf;
+        }
+
+        /// <summary>將指定大小的內容對齊到外框矩形中的某個 <see cref="ContentAlignment"/> 位置。</summary>
         private static Rectangle AlignWithin(Rectangle outer, Size inner, ContentAlignment align)
         {
             int x = outer.Left, y = outer.Top;
@@ -346,22 +450,37 @@ namespace YYControls.Controls.Buttons
             return new Rectangle(new Point(x, y), inner);
         }
 
-        private static StringFormat GetStringFormat(ContentAlignment align)
+        private static int AlignMiddleY(Rectangle outer, int h) => outer.Top + (outer.Height - h) / 2;
+        private static int AlignMiddleX(Rectangle outer, int w) => outer.Left + (outer.Width - w) / 2;
+
+        #endregion
+
+        #region === Geometry Helpers ===
+
+        /// <summary>
+        /// 產生圓角矩形路徑；當半徑為 0 時退化為直角矩形。
+        /// </summary>
+        private static GraphicsPath RoundedRect(RectangleF rect, float radius)
         {
-            var sf = new StringFormat(StringFormatFlags.NoWrap);
-            switch (align)
+            var path = new GraphicsPath();
+            float r = Math.Max(0f, Math.Min(radius, Math.Min(rect.Width, rect.Height) / 2f));
+            if (r == 0f)
             {
-                case ContentAlignment.TopLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Near; break;
-                case ContentAlignment.TopCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Near; break;
-                case ContentAlignment.TopRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Near; break;
-                case ContentAlignment.MiddleLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Center; break;
-                case ContentAlignment.MiddleCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Center; break;
-                case ContentAlignment.MiddleRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Center; break;
-                case ContentAlignment.BottomLeft: sf.Alignment = StringAlignment.Near; sf.LineAlignment = StringAlignment.Far; break;
-                case ContentAlignment.BottomCenter: sf.Alignment = StringAlignment.Center; sf.LineAlignment = StringAlignment.Far; break;
-                case ContentAlignment.BottomRight: sf.Alignment = StringAlignment.Far; sf.LineAlignment = StringAlignment.Far; break;
+                path.AddRectangle(rect);
+                path.CloseFigure();
+                return path;
             }
-            return sf;
+
+            float d = 2f * r;
+            path.StartFigure();
+            path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+            path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+            path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+            path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+            path.CloseFigure();
+            return path;
         }
+
+        #endregion
     }
 }
