@@ -26,6 +26,7 @@ namespace Project_LBTToolBox.Scopes
 
             // 初始化 View
             _viewHost.Register("ChipIdCorrection", Scope.chipIdCorrectionView);
+            _viewHost.Register("DataGain", Scope.dataGainView);
             _viewHost.Register("Setting", Scope.settingView);
 
             // 初始化 Menu
@@ -33,7 +34,8 @@ namespace Project_LBTToolBox.Scopes
             _menuController.SetMenuMappings(new Dictionary<string, string>
             {
                 { "btnChipIdCorrection", "ChipIdCorrection" },
-                { "btnSetting", "Setting" }
+                { "btnSetting", "Setting" },
+                { "btnDataGain", "DataGain"},
             });
 
             _viewHost.Switch("ChipIdCorrection");

@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelView = new System.Windows.Forms.Panel();
-            this.btnChipIdCorrection = new System.Windows.Forms.Button();
             this.btnSetting = new System.Windows.Forms.Button();
+            this.btnChipIdCorrection = new System.Windows.Forms.Button();
+            this.panelView = new System.Windows.Forms.Panel();
+            this.btnDataGain = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnSetting);
+            this.panelMenu.Controls.Add(this.btnDataGain);
             this.panelMenu.Controls.Add(this.btnChipIdCorrection);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -47,14 +49,17 @@
             this.panelMenu.Size = new System.Drawing.Size(1182, 80);
             this.panelMenu.TabIndex = 0;
             // 
-            // panelView
+            // btnSetting
             // 
-            this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelView.Location = new System.Drawing.Point(0, 80);
-            this.panelView.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.panelView.Name = "panelView";
-            this.panelView.Size = new System.Drawing.Size(1182, 773);
-            this.panelView.TabIndex = 1;
+            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetting.ForeColor = System.Drawing.Color.White;
+            this.btnSetting.Location = new System.Drawing.Point(455, 0);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(166, 80);
+            this.btnSetting.TabIndex = 1;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = true;
             // 
             // btnChipIdCorrection
             // 
@@ -68,17 +73,26 @@
             this.btnChipIdCorrection.Text = "Chip ID Correction";
             this.btnChipIdCorrection.UseVisualStyleBackColor = true;
             // 
-            // btnSetting
+            // panelView
             // 
-            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(289, 0);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(166, 80);
-            this.btnSetting.TabIndex = 1;
-            this.btnSetting.Text = "Setting";
-            this.btnSetting.UseVisualStyleBackColor = true;
+            this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelView.Location = new System.Drawing.Point(0, 80);
+            this.panelView.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.panelView.Name = "panelView";
+            this.panelView.Size = new System.Drawing.Size(1182, 773);
+            this.panelView.TabIndex = 1;
+            // 
+            // btnDataGain
+            // 
+            this.btnDataGain.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDataGain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataGain.ForeColor = System.Drawing.Color.White;
+            this.btnDataGain.Location = new System.Drawing.Point(289, 0);
+            this.btnDataGain.Name = "btnDataGain";
+            this.btnDataGain.Size = new System.Drawing.Size(166, 80);
+            this.btnDataGain.TabIndex = 2;
+            this.btnDataGain.Text = "Data Gain";
+            this.btnDataGain.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -102,6 +116,7 @@
         private System.Windows.Forms.Panel panelView;
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Button btnChipIdCorrection;
+        private System.Windows.Forms.Button btnDataGain;
     }
 }
 

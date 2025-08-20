@@ -17,7 +17,9 @@ namespace Project_LBTToolBox.Scopes
             InitializeChipIdCorrectionService();
             InitializeLotFileDisplayService();
 
+            // Initialize Views
             InitializeChipIdCorrectionView();
+            InitializeDataGainView();
             InitializeSettingView();
 
             

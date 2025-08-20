@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\ISettingViewPack.cs" />
     <Compile Include="Scopes\Scope.ChipIdCorrection.cs" />
     <Compile Include="Scopes\Scope.cs" />
+    <Compile Include="Scopes\Scope.DataGainView.cs" />
     <Compile Include="Scopes\Scope.Logger.cs" />
     <Compile Include="Scopes\Scope.LotFileDisplayService.cs" />
     <Compile Include="Scopes\Scope.MainForm.cs" />
@@ -76,6 +77,12 @@
     <Compile Include="Views\ChipIdCorrectionView.Designer.cs">
       <DependentUpon>ChipIdCorrectionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DataGainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DataGainView.Designer.cs">
+      <DependentUpon>DataGainView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="Views\ChipIdCorrectionView.resx">
       <DependentUpon>ChipIdCorrectionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DataGainView.resx">
+      <DependentUpon>DataGainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
