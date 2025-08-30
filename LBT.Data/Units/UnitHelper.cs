@@ -114,5 +114,32 @@ namespace LBT.Data.Units
             var symbol = GetUnitSymbol(unit, order);
             return Math.Round(value, decimals).ToString(CultureInfo.InvariantCulture) + " " + symbol;
         }
+
+        #region 單位轉換
+        /// <summary>
+        /// 將功率由 dBm 轉換為 mW。
+        /// <para>公式：mW = 10^(dBm / 10)</para>
+        /// </summary>
+        /// <param name="dBm">功率值（dBm）</param>
+        /// <returns>功率值（mW）</returns>
+        public static double Convert_dBm_To_mW(double dBm)
+        {
+            if (double.IsNaN(dBm) || double.IsInfinity(dBm)) return dBm;
+            return Math.Pow(10, dBm / 10.0);
+        }
+
+        /// <summary>
+        /// 將功率由 mW 轉換為 dBm。
+        /// <para>公式：dBm = 10 * log10(mW)</para>
+        /// </summary>
+        /// <param name="mW">功率值（mW）</param>
+        /// <returns>功率值（dBm）</returns>
+        public static double Convert_mW_To_dBm(double mW)
+        {
+            if (double.IsNaN(mW) || double.IsInfinity(mW)) return mW;
+            if (mW <= 0) throw new ArgumentOutOfRangeException(nameof(mW), "mW must be positive for dBm conversion.");
+            return 10.0 * Math.Log10(mW);
+        }
+        #endregion
     }
 }
