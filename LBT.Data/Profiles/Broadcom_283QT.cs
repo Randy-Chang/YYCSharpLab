@@ -14,8 +14,8 @@ namespace LBT.Data.Profiles
             EInputRawData.LDSweep1,
             EInputRawData.EASweep1,
             EInputRawData.EASweep2,
-            EInputRawData.Spectrum1,
-            EInputRawData.Spectrum2,
+            EInputRawData.OSASweep1,
+            EInputRawData.OSASweep2,
             EInputRawData.SingleAndOSATerm,
         };
 

@@ -54,6 +54,8 @@
     <Compile Include="Units\UnitHelper.cs" />
     <Compile Include="Units\Units.Contracts.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="IO\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

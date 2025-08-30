@@ -17,11 +17,11 @@ namespace LBT.Data.Profiles
         SOASweep1,
         SOASweep2,
         SOASweep3,
-        Spectrum1,
-        Spectrum2,
-        Spectrum3,
-        Spectrum4,
-        Spectrum5,
+        OSASweep1,
+        OSASweep2,
+        OSASweep3,
+        OSASweep4,
+        OSASweep5,
         SingleAndOSATerm,
     }
 
