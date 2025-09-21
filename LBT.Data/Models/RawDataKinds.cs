@@ -11,7 +11,7 @@ namespace LBT.Data.Models
         LD_SweepI,
         EA_SweepV,
         SOA_SweepI,
-        OSA_Sweep,
+        OSA_Sweep, // Optical Spectrum Analyzer Sweep
         SingleAndOSATerm,
     }
 
@@ -24,7 +24,7 @@ namespace LBT.Data.Models
         LD_BackwardLightPower,
         LD_ForwardPD_Voltage,
         LD_BackwardPD_Voltage,
-
+        
         EA_Current,
         EA_Voltage,
 

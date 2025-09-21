@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\FileSpecs\FileScope.cs" />
+    <Compile Include="Models\FileSpecs\RawFileSpec.cs" />
+    <Compile Include="Models\FileSpecs\LotFileSpec.cs" />
     <Compile Include="Models\RawDataKinds.cs" />
     <Compile Include="Models\RawDataBase.cs" />
     <Compile Include="Models\SingleAndOSARawData.cs" />
