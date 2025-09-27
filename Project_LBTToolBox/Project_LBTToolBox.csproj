@@ -44,9 +44,6 @@
     <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
-    <Reference Include="RJContumControls">
-      <HintPath>..\RJContumControls\obj\Debug\RJContumControls.dll</HintPath>
-    </Reference>
     <Reference Include="ScottPlot, Version=5.0.56.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>..\packages\ScottPlot.5.0.56\lib\net462\ScottPlot.dll</HintPath>
     </Reference>
@@ -119,18 +116,6 @@
     <Compile Include="Services\ChipIdCorrection\OcrMatchCriteria.cs" />
     <Compile Include="Services\ChipIdCorrection\OcrMatchCriteriaExtensions.cs" />
     <Compile Include="Services\LotFileDisplay\LotFileDisplayService.cs" />
-    <Compile Include="Views\AlarmDashboardView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\AlarmDashboardView.Designer.cs">
-      <DependentUpon>AlarmDashboardView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AlarmSettingsView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\AlarmSettingsView.Designer.cs">
-      <DependentUpon>AlarmSettingsView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ChipIdCorrectionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,12 +144,6 @@
     <Compile Include="Views\SettingView.Designer.cs">
       <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\AlarmDashboardView.resx">
-      <DependentUpon>AlarmDashboardView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\AlarmSettingsView.resx">
-      <DependentUpon>AlarmSettingsView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChipIdCorrectionView.resx">
       <DependentUpon>ChipIdCorrectionView.cs</DependentUpon>
     </EmbeddedResource>
