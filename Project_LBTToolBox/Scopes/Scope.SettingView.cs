@@ -18,6 +18,7 @@ namespace Project_LBTToolBox.Scopes
 
         void InitializeSettingView()
         {
+            alarmSettingsView = new AlarmSettingsView();
             alarmDashboardView = new AlarmDashboardView();
             settingView = new SettingView(new SettingViewPack());
         }

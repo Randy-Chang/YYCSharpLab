@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project_LBTToolBox.Views.Alarms
@@ -15,6 +9,17 @@ namespace Project_LBTToolBox.Views.Alarms
         public AlarmSettingsView()
         {
             InitializeComponent();
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
+
+            //ApplyDarkTheme(this);
+        }
+
+        private void ApplyDarkTheme(Control c)
+        {
+            c.BackColor = Color.FromArgb(13, 13, 13);
+            c.ForeColor = Color.White;
+            foreach (Control child in c.Controls)
+                ApplyDarkTheme(child);
         }
     }
 }
