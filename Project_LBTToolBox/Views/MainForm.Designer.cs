@@ -30,9 +30,11 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnSetting = new System.Windows.Forms.Button();
+            this.btnDataGain = new System.Windows.Forms.Button();
             this.btnChipIdCorrection = new System.Windows.Forms.Button();
             this.panelView = new System.Windows.Forms.Panel();
-            this.btnDataGain = new System.Windows.Forms.Button();
+            this.btnAlarmSettings = new System.Windows.Forms.Button();
+            this.btnAlarmDashboard = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +42,8 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnSetting);
+            this.panelMenu.Controls.Add(this.btnAlarmDashboard);
+            this.panelMenu.Controls.Add(this.btnAlarmSettings);
             this.panelMenu.Controls.Add(this.btnDataGain);
             this.panelMenu.Controls.Add(this.btnChipIdCorrection);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -54,12 +58,24 @@
             this.btnSetting.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(455, 0);
+            this.btnSetting.Location = new System.Drawing.Point(787, 0);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(166, 80);
             this.btnSetting.TabIndex = 1;
             this.btnSetting.Text = "Setting";
             this.btnSetting.UseVisualStyleBackColor = true;
+            // 
+            // btnDataGain
+            // 
+            this.btnDataGain.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDataGain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataGain.ForeColor = System.Drawing.Color.White;
+            this.btnDataGain.Location = new System.Drawing.Point(289, 0);
+            this.btnDataGain.Name = "btnDataGain";
+            this.btnDataGain.Size = new System.Drawing.Size(166, 80);
+            this.btnDataGain.TabIndex = 2;
+            this.btnDataGain.Text = "Data Gain";
+            this.btnDataGain.UseVisualStyleBackColor = true;
             // 
             // btnChipIdCorrection
             // 
@@ -82,17 +98,29 @@
             this.panelView.Size = new System.Drawing.Size(1182, 773);
             this.panelView.TabIndex = 1;
             // 
-            // btnDataGain
+            // btnAlarmSettings
             // 
-            this.btnDataGain.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDataGain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDataGain.ForeColor = System.Drawing.Color.White;
-            this.btnDataGain.Location = new System.Drawing.Point(289, 0);
-            this.btnDataGain.Name = "btnDataGain";
-            this.btnDataGain.Size = new System.Drawing.Size(166, 80);
-            this.btnDataGain.TabIndex = 2;
-            this.btnDataGain.Text = "Data Gain";
-            this.btnDataGain.UseVisualStyleBackColor = true;
+            this.btnAlarmSettings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAlarmSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlarmSettings.ForeColor = System.Drawing.Color.White;
+            this.btnAlarmSettings.Location = new System.Drawing.Point(455, 0);
+            this.btnAlarmSettings.Name = "btnAlarmSettings";
+            this.btnAlarmSettings.Size = new System.Drawing.Size(166, 80);
+            this.btnAlarmSettings.TabIndex = 3;
+            this.btnAlarmSettings.Text = "Log : Alarm Settings";
+            this.btnAlarmSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnAlarmDashboard
+            // 
+            this.btnAlarmDashboard.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAlarmDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlarmDashboard.ForeColor = System.Drawing.Color.White;
+            this.btnAlarmDashboard.Location = new System.Drawing.Point(621, 0);
+            this.btnAlarmDashboard.Name = "btnAlarmDashboard";
+            this.btnAlarmDashboard.Size = new System.Drawing.Size(166, 80);
+            this.btnAlarmDashboard.TabIndex = 4;
+            this.btnAlarmDashboard.Text = "Log : Alarm Dashboard";
+            this.btnAlarmDashboard.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -117,6 +145,8 @@
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Button btnChipIdCorrection;
         private System.Windows.Forms.Button btnDataGain;
+        private System.Windows.Forms.Button btnAlarmDashboard;
+        private System.Windows.Forms.Button btnAlarmSettings;
     }
 }
 
