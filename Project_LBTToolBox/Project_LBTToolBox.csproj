@@ -119,6 +119,18 @@
     <Compile Include="Services\ChipIdCorrection\OcrMatchCriteria.cs" />
     <Compile Include="Services\ChipIdCorrection\OcrMatchCriteriaExtensions.cs" />
     <Compile Include="Services\LotFileDisplay\LotFileDisplayService.cs" />
+    <Compile Include="Views\AlarmDashboardView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AlarmDashboardView.Designer.cs">
+      <DependentUpon>AlarmDashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AlarmSettingsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AlarmSettingsView.Designer.cs">
+      <DependentUpon>AlarmSettingsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChipIdCorrectionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +159,12 @@
     <Compile Include="Views\SettingView.Designer.cs">
       <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AlarmDashboardView.resx">
+      <DependentUpon>AlarmDashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AlarmSettingsView.resx">
+      <DependentUpon>AlarmSettingsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChipIdCorrectionView.resx">
       <DependentUpon>ChipIdCorrectionView.cs</DependentUpon>
     </EmbeddedResource>
