@@ -102,26 +102,26 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // lbPaths
             // 
-            this.lbPaths.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbPaths.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbPaths.ItemHeight = 22;
-            this.lbPaths.Location = new System.Drawing.Point(3, 25);
+            this.lbPaths.Location = new System.Drawing.Point(3, 79);
             this.lbPaths.Name = "lbPaths";
-            this.lbPaths.Size = new System.Drawing.Size(431, 146);
+            this.lbPaths.Size = new System.Drawing.Size(431, 92);
             this.lbPaths.TabIndex = 0;
             // 
             // btnAddPath
             // 
-            this.btnAddPath.Location = new System.Drawing.Point(0, 0);
+            this.btnAddPath.Location = new System.Drawing.Point(6, 28);
             this.btnAddPath.Name = "btnAddPath";
-            this.btnAddPath.Size = new System.Drawing.Size(75, 23);
+            this.btnAddPath.Size = new System.Drawing.Size(111, 35);
             this.btnAddPath.TabIndex = 1;
             this.btnAddPath.Text = "新增路徑";
             // 
             // btnRemovePath
             // 
-            this.btnRemovePath.Location = new System.Drawing.Point(0, 0);
+            this.btnRemovePath.Location = new System.Drawing.Point(123, 28);
             this.btnRemovePath.Name = "btnRemovePath";
-            this.btnRemovePath.Size = new System.Drawing.Size(75, 23);
+            this.btnRemovePath.Size = new System.Drawing.Size(111, 35);
             this.btnRemovePath.TabIndex = 2;
             this.btnRemovePath.Text = "移除";
             // 
@@ -219,7 +219,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // chkWarnOnly
             // 
-            this.chkWarnOnly.Location = new System.Drawing.Point(0, 0);
+            this.chkWarnOnly.Location = new System.Drawing.Point(6, 28);
             this.chkWarnOnly.Name = "chkWarnOnly";
             this.chkWarnOnly.Size = new System.Drawing.Size(104, 24);
             this.chkWarnOnly.TabIndex = 0;
@@ -227,7 +227,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // chkIncremental
             // 
-            this.chkIncremental.Location = new System.Drawing.Point(0, 0);
+            this.chkIncremental.Location = new System.Drawing.Point(6, 58);
             this.chkIncremental.Name = "chkIncremental";
             this.chkIncremental.Size = new System.Drawing.Size(104, 24);
             this.chkIncremental.TabIndex = 1;
@@ -235,7 +235,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // chkDedup
             // 
-            this.chkDedup.Location = new System.Drawing.Point(0, 0);
+            this.chkDedup.Location = new System.Drawing.Point(6, 88);
             this.chkDedup.Name = "chkDedup";
             this.chkDedup.Size = new System.Drawing.Size(104, 24);
             this.chkDedup.TabIndex = 2;
@@ -243,25 +243,25 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(0, 0);
+            this.btnSave.Location = new System.Drawing.Point(6, 132);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(138, 36);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "儲存設定";
             // 
             // btnRescan
             // 
-            this.btnRescan.Location = new System.Drawing.Point(0, 0);
+            this.btnRescan.Location = new System.Drawing.Point(150, 132);
             this.btnRescan.Name = "btnRescan";
-            this.btnRescan.Size = new System.Drawing.Size(75, 23);
+            this.btnRescan.Size = new System.Drawing.Size(138, 36);
             this.btnRescan.TabIndex = 4;
             this.btnRescan.Text = "重新掃描";
             // 
             // btnRebuild
             // 
-            this.btnRebuild.Location = new System.Drawing.Point(0, 0);
+            this.btnRebuild.Location = new System.Drawing.Point(294, 132);
             this.btnRebuild.Name = "btnRebuild";
-            this.btnRebuild.Size = new System.Drawing.Size(75, 23);
+            this.btnRebuild.Size = new System.Drawing.Size(138, 36);
             this.btnRebuild.TabIndex = 5;
             this.btnRebuild.Text = "重建資料庫";
             // 

@@ -111,7 +111,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlpRoot.Size = new System.Drawing.Size(1182, 773);
+            this.tlpRoot.Size = new System.Drawing.Size(1400, 773);
             this.tlpRoot.TabIndex = 0;
             // 
             // pnlToolbar
@@ -120,7 +120,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pnlToolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlToolbar.Location = new System.Drawing.Point(3, 3);
             this.pnlToolbar.Name = "pnlToolbar";
-            this.pnlToolbar.Size = new System.Drawing.Size(1176, 56);
+            this.pnlToolbar.Size = new System.Drawing.Size(1394, 56);
             this.pnlToolbar.TabIndex = 0;
             // 
             // flToolbar
@@ -139,7 +139,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.flToolbar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flToolbar.Location = new System.Drawing.Point(0, 0);
             this.flToolbar.Name = "flToolbar";
-            this.flToolbar.Size = new System.Drawing.Size(1176, 56);
+            this.flToolbar.Size = new System.Drawing.Size(1394, 56);
             this.flToolbar.TabIndex = 0;
             this.flToolbar.WrapContents = false;
             // 
@@ -208,7 +208,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.btnApply.Location = new System.Drawing.Point(996, 3);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.Size = new System.Drawing.Size(75, 30);
             this.btnApply.TabIndex = 7;
             this.btnApply.Text = "套用";
             // 
@@ -216,7 +216,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.btnReset.Location = new System.Drawing.Point(1077, 3);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(75, 30);
             this.btnReset.TabIndex = 8;
             this.btnReset.Text = "重置";
             // 
@@ -224,7 +224,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.btnRescan.Location = new System.Drawing.Point(1158, 3);
             this.btnRescan.Name = "btnRescan";
-            this.btnRescan.Size = new System.Drawing.Size(75, 23);
+            this.btnRescan.Size = new System.Drawing.Size(75, 30);
             this.btnRescan.TabIndex = 9;
             this.btnRescan.Text = "重新掃描";
             // 
@@ -232,7 +232,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.btnExport.Location = new System.Drawing.Point(1239, 3);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.Size = new System.Drawing.Size(75, 29);
             this.btnExport.TabIndex = 10;
             this.btnExport.Text = "匯出 CSV";
             // 
@@ -248,7 +248,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpTopRow.Name = "tlpTopRow";
             this.tlpTopRow.RowCount = 1;
             this.tlpTopRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpTopRow.Size = new System.Drawing.Size(1176, 114);
+            this.tlpTopRow.Size = new System.Drawing.Size(1394, 114);
             this.tlpTopRow.TabIndex = 1;
             // 
             // tlpKpi
@@ -267,7 +267,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpKpi.Name = "tlpKpi";
             this.tlpKpi.RowCount = 1;
             this.tlpKpi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpKpi.Size = new System.Drawing.Size(582, 108);
+            this.tlpKpi.Size = new System.Drawing.Size(691, 108);
             this.tlpKpi.TabIndex = 0;
             // 
             // cardK1
@@ -277,7 +277,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.cardK1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cardK1.Location = new System.Drawing.Point(3, 3);
             this.cardK1.Name = "cardK1";
-            this.cardK1.Size = new System.Drawing.Size(139, 102);
+            this.cardK1.Size = new System.Drawing.Size(166, 102);
             this.cardK1.TabIndex = 0;
             // 
             // lblKpi1Value
@@ -306,9 +306,9 @@ namespace Project_LBTToolBox.Views.Alarms
             this.cardK2.Controls.Add(this.lblKpi2Value);
             this.cardK2.Controls.Add(this.lblKpi2Title);
             this.cardK2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardK2.Location = new System.Drawing.Point(148, 3);
+            this.cardK2.Location = new System.Drawing.Point(175, 3);
             this.cardK2.Name = "cardK2";
-            this.cardK2.Size = new System.Drawing.Size(139, 102);
+            this.cardK2.Size = new System.Drawing.Size(166, 102);
             this.cardK2.TabIndex = 1;
             // 
             // lblKpi2Value
@@ -337,9 +337,9 @@ namespace Project_LBTToolBox.Views.Alarms
             this.cardK3.Controls.Add(this.lblKpi3Value);
             this.cardK3.Controls.Add(this.lblKpi3Title);
             this.cardK3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardK3.Location = new System.Drawing.Point(293, 3);
+            this.cardK3.Location = new System.Drawing.Point(347, 3);
             this.cardK3.Name = "cardK3";
-            this.cardK3.Size = new System.Drawing.Size(139, 102);
+            this.cardK3.Size = new System.Drawing.Size(166, 102);
             this.cardK3.TabIndex = 2;
             // 
             // lblKpi3Value
@@ -368,9 +368,9 @@ namespace Project_LBTToolBox.Views.Alarms
             this.cardK4.Controls.Add(this.lblKpi4Value);
             this.cardK4.Controls.Add(this.lblKpi4Title);
             this.cardK4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardK4.Location = new System.Drawing.Point(438, 3);
+            this.cardK4.Location = new System.Drawing.Point(519, 3);
             this.cardK4.Name = "cardK4";
-            this.cardK4.Size = new System.Drawing.Size(141, 102);
+            this.cardK4.Size = new System.Drawing.Size(169, 102);
             this.cardK4.TabIndex = 3;
             // 
             // lblKpi4Value
@@ -398,9 +398,9 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.gbTrend.Controls.Add(this.pnlTrendHost);
             this.gbTrend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbTrend.Location = new System.Drawing.Point(591, 3);
+            this.gbTrend.Location = new System.Drawing.Point(700, 3);
             this.gbTrend.Name = "gbTrend";
-            this.gbTrend.Size = new System.Drawing.Size(582, 108);
+            this.gbTrend.Size = new System.Drawing.Size(691, 108);
             this.gbTrend.TabIndex = 1;
             this.gbTrend.TabStop = false;
             this.gbTrend.Text = "每日 WARN 趨勢";
@@ -410,7 +410,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pnlTrendHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTrendHost.Location = new System.Drawing.Point(3, 25);
             this.pnlTrendHost.Name = "pnlTrendHost";
-            this.pnlTrendHost.Size = new System.Drawing.Size(576, 80);
+            this.pnlTrendHost.Size = new System.Drawing.Size(685, 80);
             this.pnlTrendHost.TabIndex = 0;
             // 
             // tlpBottomRow
@@ -425,7 +425,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpBottomRow.Name = "tlpBottomRow";
             this.tlpBottomRow.RowCount = 1;
             this.tlpBottomRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpBottomRow.Size = new System.Drawing.Size(1176, 319);
+            this.tlpBottomRow.Size = new System.Drawing.Size(1394, 319);
             this.tlpBottomRow.TabIndex = 2;
             // 
             // gbByMachine
@@ -434,7 +434,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbByMachine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbByMachine.Location = new System.Drawing.Point(3, 3);
             this.gbByMachine.Name = "gbByMachine";
-            this.gbByMachine.Size = new System.Drawing.Size(582, 313);
+            this.gbByMachine.Size = new System.Drawing.Size(691, 313);
             this.gbByMachine.TabIndex = 0;
             this.gbByMachine.TabStop = false;
             this.gbByMachine.Text = "各機台 WARN 次數";
@@ -444,16 +444,16 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pnlByMachineHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlByMachineHost.Location = new System.Drawing.Point(3, 25);
             this.pnlByMachineHost.Name = "pnlByMachineHost";
-            this.pnlByMachineHost.Size = new System.Drawing.Size(576, 285);
+            this.pnlByMachineHost.Size = new System.Drawing.Size(685, 285);
             this.pnlByMachineHost.TabIndex = 0;
             // 
             // gbByCode
             // 
             this.gbByCode.Controls.Add(this.pnlByCodeHost);
             this.gbByCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbByCode.Location = new System.Drawing.Point(591, 3);
+            this.gbByCode.Location = new System.Drawing.Point(700, 3);
             this.gbByCode.Name = "gbByCode";
-            this.gbByCode.Size = new System.Drawing.Size(582, 313);
+            this.gbByCode.Size = new System.Drawing.Size(691, 313);
             this.gbByCode.TabIndex = 1;
             this.gbByCode.TabStop = false;
             this.gbByCode.Text = "各警報代碼 WARN 次數";
@@ -463,7 +463,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pnlByCodeHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlByCodeHost.Location = new System.Drawing.Point(3, 25);
             this.pnlByCodeHost.Name = "pnlByCodeHost";
-            this.pnlByCodeHost.Size = new System.Drawing.Size(576, 285);
+            this.pnlByCodeHost.Size = new System.Drawing.Size(685, 285);
             this.pnlByCodeHost.TabIndex = 0;
             // 
             // gbDetails
@@ -472,7 +472,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDetails.Location = new System.Drawing.Point(3, 510);
             this.gbDetails.Name = "gbDetails";
-            this.gbDetails.Size = new System.Drawing.Size(1176, 260);
+            this.gbDetails.Size = new System.Drawing.Size(1394, 260);
             this.gbDetails.TabIndex = 3;
             this.gbDetails.TabStop = false;
             this.gbDetails.Text = "明細";
@@ -485,7 +485,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.dgvDetails.Location = new System.Drawing.Point(3, 25);
             this.dgvDetails.Name = "dgvDetails";
             this.dgvDetails.RowHeadersWidth = 51;
-            this.dgvDetails.Size = new System.Drawing.Size(1170, 232);
+            this.dgvDetails.Size = new System.Drawing.Size(1388, 232);
             this.dgvDetails.TabIndex = 0;
             // 
             // AlarmDashboardView
@@ -493,7 +493,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.Controls.Add(this.tlpRoot);
             this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 10F);
             this.Name = "AlarmDashboardView";
-            this.Size = new System.Drawing.Size(1182, 773);
+            this.Size = new System.Drawing.Size(1400, 773);
             this.tlpRoot.ResumeLayout(false);
             this.pnlToolbar.ResumeLayout(false);
             this.flToolbar.ResumeLayout(false);

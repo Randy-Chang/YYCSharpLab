@@ -64,6 +64,7 @@ namespace UIFramework.Host
 
             _container.Controls.Clear();
             _container.Controls.Add(_views[key]);
+            _views[key].Dock = DockStyle.Fill;
             CurrentViewKey = key;
             ViewSwitched?.Invoke(key);
         }
