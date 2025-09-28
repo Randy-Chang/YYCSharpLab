@@ -21,8 +21,9 @@ namespace Project_LBTToolBox.Scopes
             InitializeChipIdCorrectionView();
             InitializeDataGainView();
             InitializeSettingView();
+            InitializeAlarmDashboard2View();
 
-            
+
             InitializeMainForm();
 
             InitializeUIFramework();

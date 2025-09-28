@@ -35,6 +35,7 @@
             this.btnDataGain = new System.Windows.Forms.Button();
             this.btnChipIdCorrection = new System.Windows.Forms.Button();
             this.panelView = new System.Windows.Forms.Panel();
+            this.btnAlarmDashboard2 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnSetting);
+            this.panelMenu.Controls.Add(this.btnAlarmDashboard2);
             this.panelMenu.Controls.Add(this.btnAlarmDashboard);
             this.panelMenu.Controls.Add(this.btnAlarmSettings);
             this.panelMenu.Controls.Add(this.btnDataGain);
@@ -59,7 +61,7 @@
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetting.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(787, 0);
+            this.btnSetting.Location = new System.Drawing.Point(953, 0);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(166, 64);
             this.btnSetting.TabIndex = 1;
@@ -127,6 +129,19 @@
             this.panelView.Size = new System.Drawing.Size(1182, 789);
             this.panelView.TabIndex = 1;
             // 
+            // btnAlarmDashboard2
+            // 
+            this.btnAlarmDashboard2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAlarmDashboard2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlarmDashboard2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAlarmDashboard2.ForeColor = System.Drawing.Color.White;
+            this.btnAlarmDashboard2.Location = new System.Drawing.Point(787, 0);
+            this.btnAlarmDashboard2.Name = "btnAlarmDashboard2";
+            this.btnAlarmDashboard2.Size = new System.Drawing.Size(166, 64);
+            this.btnAlarmDashboard2.TabIndex = 5;
+            this.btnAlarmDashboard2.Text = "Alarm Dashboard";
+            this.btnAlarmDashboard2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -152,6 +167,7 @@
         private System.Windows.Forms.Button btnDataGain;
         private System.Windows.Forms.Button btnAlarmDashboard;
         private System.Windows.Forms.Button btnAlarmSettings;
+        private System.Windows.Forms.Button btnAlarmDashboard2;
     }
 }
 

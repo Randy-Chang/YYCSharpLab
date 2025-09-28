@@ -102,16 +102,19 @@
     <Compile Include="Interfaces\IChipIdCorrectionViewPack.cs" />
     <Compile Include="Interfaces\IMainFormPack.cs" />
     <Compile Include="Interfaces\ISettingViewPack.cs" />
-    <Compile Include="Scopes\Scope.ChipIdCorrection.cs" />
+    <Compile Include="Scopes\Alarms\Scope.AlarmDashboard2.cs" />
+    <Compile Include="Scopes\ChipIdCorrections\Scope.ChipIdCorrection.cs" />
     <Compile Include="Scopes\Scope.cs" />
     <Compile Include="Scopes\Scope.DataGainView.cs" />
     <Compile Include="Scopes\Scope.Logger.cs" />
-    <Compile Include="Scopes\Scope.LotFileDisplayService.cs" />
-    <Compile Include="Scopes\Scope.MainForm.cs" />
-    <Compile Include="Scopes\Scope.Setting.cs" />
-    <Compile Include="Scopes\Scope.SettingView.cs" />
-    <Compile Include="Scopes\Scope.UIFramework.cs" />
-    <Compile Include="Scopes\Scope.ViewHostManager.cs" />
+    <Compile Include="Scopes\ChipIdCorrections\Scope.LotFileDisplayService.cs" />
+    <Compile Include="Scopes\MainForms\Scope.MainForm.cs" />
+    <Compile Include="Scopes\Settings\Scope.Setting.cs" />
+    <Compile Include="Scopes\Settings\Scope.SettingView.cs" />
+    <Compile Include="Scopes\MainForms\Scope.UIFramework.cs" />
+    <Compile Include="Scopes\MainForms\Scope.ViewHostManager.cs" />
+    <Compile Include="Services\Alarms\AlarmRecord.cs" />
+    <Compile Include="Services\Alarms\AlarmService.cs" />
     <Compile Include="Services\ChipIdCorrection\ChipRecord.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IUIFeedback.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IDataFileEditor.cs" />
@@ -126,6 +129,12 @@
     </Compile>
     <Compile Include="Views\Alarms\AlarmDashboardView.Designer.cs">
       <DependentUpon>AlarmDashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Alarms\AlarmDashboardView2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Alarms\AlarmDashboardView2.Designer.cs">
+      <DependentUpon>AlarmDashboardView2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Alarms\AlarmSettingsView.cs">
       <SubType>UserControl</SubType>
@@ -153,7 +162,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scopes\Scope.ChipIdCorrectionView.cs" />
+    <Compile Include="Scopes\ChipIdCorrections\Scope.ChipIdCorrectionView.cs" />
     <Compile Include="Services\ChipIdCorrection\ChipIdCorrectionService.cs" />
     <Compile Include="Views\SettingView.cs">
       <SubType>UserControl</SubType>
@@ -163,6 +172,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Alarms\AlarmDashboardView.resx">
       <DependentUpon>AlarmDashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Alarms\AlarmDashboardView2.resx">
+      <DependentUpon>AlarmDashboardView2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Alarms\AlarmSettingsView.resx">
       <DependentUpon>AlarmSettingsView.cs</DependentUpon>
@@ -217,6 +229,7 @@
       <Name>YYControls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\HarfBuzzSharp.NativeAssets.macOS.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.macOS.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -30,7 +30,7 @@ namespace Project_LBTToolBox.Scopes
             _viewHost.Register("Setting", Scope.settingView);
             _viewHost.Register("AlarmSettings", Scope.alarmSettingsView);
             _viewHost.Register("AlarmDashboard", Scope.alarmDashboardView);
-
+            _viewHost.Register("AlarmDashboard", Scope.alarmDashboardView);
             // 初始化 Menu
             _menuController.Initialize(mainForm.PanelMenu);
             _menuController.SetMenuMappings(new Dictionary<string, string>
