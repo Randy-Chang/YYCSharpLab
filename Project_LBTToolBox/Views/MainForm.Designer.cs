@@ -30,12 +30,10 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnSetting = new System.Windows.Forms.Button();
-            this.btnAlarmDashboard = new System.Windows.Forms.Button();
-            this.btnAlarmSettings = new System.Windows.Forms.Button();
+            this.btnAlarmDashboard2 = new System.Windows.Forms.Button();
             this.btnDataGain = new System.Windows.Forms.Button();
             this.btnChipIdCorrection = new System.Windows.Forms.Button();
             this.panelView = new System.Windows.Forms.Panel();
-            this.btnAlarmDashboard2 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,8 +42,6 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnSetting);
             this.panelMenu.Controls.Add(this.btnAlarmDashboard2);
-            this.panelMenu.Controls.Add(this.btnAlarmDashboard);
-            this.panelMenu.Controls.Add(this.btnAlarmSettings);
             this.panelMenu.Controls.Add(this.btnDataGain);
             this.panelMenu.Controls.Add(this.btnChipIdCorrection);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -61,38 +57,25 @@
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetting.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(953, 0);
+            this.btnSetting.Location = new System.Drawing.Point(621, 0);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(166, 64);
             this.btnSetting.TabIndex = 1;
             this.btnSetting.Text = "Setting";
             this.btnSetting.UseVisualStyleBackColor = true;
             // 
-            // btnAlarmDashboard
+            // btnAlarmDashboard2
             // 
-            this.btnAlarmDashboard.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAlarmDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmDashboard.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAlarmDashboard.ForeColor = System.Drawing.Color.White;
-            this.btnAlarmDashboard.Location = new System.Drawing.Point(621, 0);
-            this.btnAlarmDashboard.Name = "btnAlarmDashboard";
-            this.btnAlarmDashboard.Size = new System.Drawing.Size(166, 64);
-            this.btnAlarmDashboard.TabIndex = 4;
-            this.btnAlarmDashboard.Text = "Log : Alarm Dashboard";
-            this.btnAlarmDashboard.UseVisualStyleBackColor = true;
-            // 
-            // btnAlarmSettings
-            // 
-            this.btnAlarmSettings.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAlarmSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmSettings.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAlarmSettings.ForeColor = System.Drawing.Color.White;
-            this.btnAlarmSettings.Location = new System.Drawing.Point(455, 0);
-            this.btnAlarmSettings.Name = "btnAlarmSettings";
-            this.btnAlarmSettings.Size = new System.Drawing.Size(166, 64);
-            this.btnAlarmSettings.TabIndex = 3;
-            this.btnAlarmSettings.Text = "Log : Alarm Settings";
-            this.btnAlarmSettings.UseVisualStyleBackColor = true;
+            this.btnAlarmDashboard2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAlarmDashboard2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlarmDashboard2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAlarmDashboard2.ForeColor = System.Drawing.Color.White;
+            this.btnAlarmDashboard2.Location = new System.Drawing.Point(455, 0);
+            this.btnAlarmDashboard2.Name = "btnAlarmDashboard2";
+            this.btnAlarmDashboard2.Size = new System.Drawing.Size(166, 64);
+            this.btnAlarmDashboard2.TabIndex = 5;
+            this.btnAlarmDashboard2.Text = "Log : Alarm Dashboard";
+            this.btnAlarmDashboard2.UseVisualStyleBackColor = true;
             // 
             // btnDataGain
             // 
@@ -129,19 +112,6 @@
             this.panelView.Size = new System.Drawing.Size(1182, 789);
             this.panelView.TabIndex = 1;
             // 
-            // btnAlarmDashboard2
-            // 
-            this.btnAlarmDashboard2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAlarmDashboard2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlarmDashboard2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAlarmDashboard2.ForeColor = System.Drawing.Color.White;
-            this.btnAlarmDashboard2.Location = new System.Drawing.Point(787, 0);
-            this.btnAlarmDashboard2.Name = "btnAlarmDashboard2";
-            this.btnAlarmDashboard2.Size = new System.Drawing.Size(166, 64);
-            this.btnAlarmDashboard2.TabIndex = 5;
-            this.btnAlarmDashboard2.Text = "Alarm Dashboard";
-            this.btnAlarmDashboard2.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -165,8 +135,6 @@
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Button btnChipIdCorrection;
         private System.Windows.Forms.Button btnDataGain;
-        private System.Windows.Forms.Button btnAlarmDashboard;
-        private System.Windows.Forms.Button btnAlarmSettings;
         private System.Windows.Forms.Button btnAlarmDashboard2;
     }
 }

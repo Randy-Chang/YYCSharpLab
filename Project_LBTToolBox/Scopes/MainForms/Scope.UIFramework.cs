@@ -28,9 +28,8 @@ namespace Project_LBTToolBox.Scopes
             _viewHost.Register("ChipIdCorrection", Scope.chipIdCorrectionView);
             _viewHost.Register("DataGain", Scope.dataGainView);
             _viewHost.Register("Setting", Scope.settingView);
-            _viewHost.Register("AlarmSettings", Scope.alarmSettingsView);
-            _viewHost.Register("AlarmDashboard", Scope.alarmDashboardView);
-            _viewHost.Register("AlarmDashboard", Scope.alarmDashboardView);
+            _viewHost.Register("AlarmDashboard2", Scope.alarmDashboardView2);
+
             // 初始化 Menu
             _menuController.Initialize(mainForm.PanelMenu);
             _menuController.SetMenuMappings(new Dictionary<string, string>
@@ -38,8 +37,7 @@ namespace Project_LBTToolBox.Scopes
                 { "btnChipIdCorrection", "ChipIdCorrection" },
                 { "btnSetting", "Setting" },
                 { "btnDataGain", "DataGain"},
-                { "btnAlarmSettings", "AlarmSettings"},
-                { "btnAlarmDashboard", "AlarmDashboard"},
+                { "btnAlarmDashboard2", "AlarmDashboard2"},
             });
 
             _viewHost.Switch("ChipIdCorrection");

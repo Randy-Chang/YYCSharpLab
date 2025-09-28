@@ -13,13 +13,9 @@ namespace Project_LBTToolBox.Scopes
     public partial class Scope
     {
         static SettingView settingView;
-        static AlarmDashboardView alarmDashboardView;
-        static AlarmSettingsView alarmSettingsView;
 
         void InitializeSettingView()
         {
-            alarmSettingsView = new AlarmSettingsView();
-            alarmDashboardView = new AlarmDashboardView();
             settingView = new SettingView(new SettingViewPack());
         }
     }

@@ -113,8 +113,13 @@
     <Compile Include="Scopes\Settings\Scope.SettingView.cs" />
     <Compile Include="Scopes\MainForms\Scope.UIFramework.cs" />
     <Compile Include="Scopes\MainForms\Scope.ViewHostManager.cs" />
+    <Compile Include="Services\Alarms\AlarmCleaner.cs" />
+    <Compile Include="Services\Alarms\AlarmCodeHelper.cs" />
+    <Compile Include="Services\Alarms\AlarmGridHelper.cs" />
+    <Compile Include="Services\Alarms\AlarmPlotter.cs" />
     <Compile Include="Services\Alarms\AlarmRecord.cs" />
     <Compile Include="Services\Alarms\AlarmService.cs" />
+    <Compile Include="Services\Alarms\AlarmStatistics.cs" />
     <Compile Include="Services\ChipIdCorrection\ChipRecord.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IUIFeedback.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IDataFileEditor.cs" />
