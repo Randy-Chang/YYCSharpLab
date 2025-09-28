@@ -99,7 +99,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\CardPanel.cs" />
     <Compile Include="Interfaces\IChipIdCorrectionViewPack.cs" />
     <Compile Include="Interfaces\IMainFormPack.cs" />
     <Compile Include="Interfaces\ISettingViewPack.cs" />
@@ -162,7 +161,6 @@
     <Compile Include="Views\SettingView.Designer.cs">
       <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UiHelpers.cs" />
     <EmbeddedResource Include="Views\Alarms\AlarmDashboardView.resx">
       <DependentUpon>AlarmDashboardView.cs</DependentUpon>
     </EmbeddedResource>

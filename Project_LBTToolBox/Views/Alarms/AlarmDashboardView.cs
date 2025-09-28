@@ -20,10 +20,12 @@ namespace Project_LBTToolBox.Views.Alarms
             pnlByCodeHost.Controls.Add(fpByCode);
 
             // Demo
+            #region
             fpTrend.Plot.AddSignal(new double[] { 1, 3, 2, 5, 4, 6, 3 });
             fpTrend.Plot.Title("每日 WARN 趨勢"); fpTrend.Refresh();
             fpByMachine.Plot.AddBar(new double[] { 5, 9, 2, 7, 3 }); fpByMachine.Plot.Title("各機台 WARN 次數"); fpByMachine.Refresh();
             fpByCode.Plot.AddBar(new double[] { 8, 4, 6 }); fpByCode.Plot.Title("各警報代碼 WARN 次數"); fpByCode.Refresh();
+            #endregion
         }
     }
 }
