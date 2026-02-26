@@ -1,4 +1,5 @@
-﻿using Project_LBTToolBox.Services.Alarms;
+using Project_LBTToolBox.Services.Alarms;
+using Project_LBTToolBox.Services.AlarmsV2;
 using Project_LBTToolBox.Views.Alarms;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,6 @@ namespace Project_LBTToolBox.Scopes
     {
         static AlarmDashboardView2 alarmDashboardView2;
         static string logMainFolderPath;
-
-        AlarmService alarmService;
         AlarmStatistics alarmStatistics;
 
         List<string> ignoreKeyword = new List<string>
@@ -31,7 +30,6 @@ namespace Project_LBTToolBox.Scopes
         void InitializeAlarmDashboard2View()
         {
             alarmDashboardView2 = new AlarmDashboardView2();
-            alarmService = new AlarmService();
 
             alarmDashboardView2.BtnBrowseFolder.Click += AlarmDashboardView2_BtnBrowseFolder_Click;
             alarmDashboardView2.TxtPath.TextChanged += AlarmDashboardView2_TxtPath_TextChanged;
@@ -117,6 +115,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// Apply 流程：優先走 SQLite（匯入 + 查詢），失敗時 fallback 回舊版讀檔流程。
+        /// </summary>
+        /// <param name="sender">事件來源控制項。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView2_BtnApply_Click(object sender, EventArgs e)
         {
             AlarmDashboardView2 view2 = alarmDashboardView2;
@@ -127,19 +130,57 @@ namespace Project_LBTToolBox.Scopes
             DateTime dateTimeFrom = view2.dateTimeFrom;
             DateTime dateTimeTo = view2.dateTimeTo;
             List<(string Name, bool IsChecked)> allMachines = GetAllMachines(view2.ClbMachines);
+            List<string> selectedMachines = allMachines
+                .Where(m => m.IsChecked)
+                .Select(m => m.Name)
+                .ToList();
 
-            // 取得警報記錄
             List<AlarmRecord> alarmRecords;
-
-            alarmService.SetLogMainFolderPath(logMainFolderPath);
-            alarmRecords = alarmService.GetAlarmRecords(isFilterDate, dateTimeFrom, dateTimeTo, allMachines);
-
-            // 移除非 Warn 的記錄
-            alarmRecords = AlarmCleaner.FilterRecordByIgnoreMessage(alarmRecords, ignoreKeyword);
-
-            // Warn Code 定義轉換器
             Dictionary<string, string> warnCodeWithMessage;
-            AlarmCodeHelper.AttachedWarnCode(ref alarmRecords, out warnCodeWithMessage);
+
+            try
+            {
+                // 新流程：以 SQLite 做增量匯入與查詢
+                string sqliteDbPath = Path.Combine(logMainFolderPath, "alarms-v2.sqlite");
+                IAlarmRepository repository = new SQLiteAlarmRepository(sqliteDbPath);
+                AlarmIngestionService ingestionService = new AlarmIngestionService(repository);
+                AlarmQueryService queryService = new AlarmQueryService(repository);
+
+                ingestionService.Ingest(logMainFolderPath);
+
+                AlarmQuery query = new AlarmQuery
+                {
+                    UseDateFilter = isFilterDate,
+                    DateFrom = dateTimeFrom,
+                    DateTo = dateTimeTo,
+                    SelectedMachines = selectedMachines,
+                    Level = "WARN"
+                };
+
+                alarmRecords = queryService.QueryAlarmRecords(query);
+
+                // 移除非 Warn 的記錄
+                alarmRecords = AlarmCleaner.FilterRecordByIgnoreMessage(alarmRecords, ignoreKeyword);
+
+                // 由資料庫維表建立穩定的 WareCode 對應
+                warnCodeWithMessage = queryService.BuildWareCodeMap(alarmRecords);
+            }
+            catch (Exception ex)
+            {
+                // 保底：任何 SQLite 問題都回退到舊版純讀檔流程，避免畫面無資料
+                AlarmService fallbackService = new AlarmService();
+                fallbackService.SetLogMainFolderPath(logMainFolderPath);
+                alarmRecords = fallbackService.GetAlarmRecords(isFilterDate, dateTimeFrom, dateTimeTo, allMachines);
+
+                // 移除非 Warn 的記錄
+                alarmRecords = AlarmCleaner.FilterRecordByIgnoreMessage(alarmRecords, ignoreKeyword);
+
+                // 舊流程：動態產生 WareCode
+                AlarmCodeHelper.AttachedWarnCode(ref alarmRecords, out warnCodeWithMessage);
+
+                MessageBox.Show($"SQLite 流程啟用失敗，已切回舊版讀檔。{Environment.NewLine}{ex}",
+                                "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             // 顯示在 DataGridView - Log Table
             DataGridView dgvLogTable = view2.DgvAlarmTable;
