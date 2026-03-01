@@ -681,6 +681,9 @@ namespace Project_LBTToolBox.Scopes
             alarmDashboardView3.LblMaxAlarmCode.Text = top5Codes.Count > 0 ? top5Codes[0].Key : "N/A";
             alarmDashboardView3.LblMaxAlarmCodeTimes.Text = top5Codes.Count > 0 ? $"(Times {top5Codes[0].Value})" : "(Times N/A)";
             alarmDashboardView3.LblMaxMachine.Text = statistics.GetMaxCountMachineNumber();
+            alarmDashboardView3.UpdateKpiEmphasis(
+                statistics.TotalCount,
+                top5Codes.Count > 0 ? top5Codes[0].Value : 0);
 
             RefreshAlarmDashboard3AlarmGridPage();
             AlarmChartsV4.PlotCodeBar(alarmDashboardView3.FpCodeBar, statistics.CountsByCode, topN: 10, title: "Code Frequency" + codeSuffix, highlightCode: alarmDashboard3SelectedWarnCode);
