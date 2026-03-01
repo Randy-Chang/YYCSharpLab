@@ -8,7 +8,7 @@ namespace Project_LBTToolBox.Scopes
 {
     public partial class Scope
     {
-        static string versionDate = "LBT Tool Box 2026-0301-1";
+        static string versionDate = "LBT Tool Box 2026-0301-2";
 
         public Scope() 
         {
