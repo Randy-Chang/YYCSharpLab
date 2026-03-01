@@ -22,6 +22,7 @@ namespace Project_LBTToolBox.Scopes
             InitializeDataGainView();
             InitializeSettingView();
             InitializeAlarmDashboard2View();
+            InitializeAlarmDashboard3View();
 
 
             InitializeMainForm();

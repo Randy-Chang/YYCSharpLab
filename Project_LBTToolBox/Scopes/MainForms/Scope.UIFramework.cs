@@ -29,6 +29,7 @@ namespace Project_LBTToolBox.Scopes
             _viewHost.Register("DataGain", Scope.dataGainView);
             _viewHost.Register("Setting", Scope.settingView);
             _viewHost.Register("AlarmDashboard2", Scope.alarmDashboardView2);
+            _viewHost.Register("AlarmDashboard3", Scope.alarmDashboardView3);
 
             // 初始化 Menu
             _menuController.Initialize(mainForm.PanelMenu);
@@ -38,6 +39,7 @@ namespace Project_LBTToolBox.Scopes
                 { "btnSetting", "Setting" },
                 { "btnDataGain", "DataGain"},
                 { "btnAlarmDashboard2", "AlarmDashboard2"},
+                { "btnAlarmDashboard3", "AlarmDashboard3"},
             });
 
             _viewHost.Switch("ChipIdCorrection");

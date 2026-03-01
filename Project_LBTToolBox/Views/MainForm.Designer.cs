@@ -34,6 +34,7 @@
             this.btnDataGain = new System.Windows.Forms.Button();
             this.btnChipIdCorrection = new System.Windows.Forms.Button();
             this.panelView = new System.Windows.Forms.Panel();
+            this.btnAlarmDashboard3 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnSetting);
+            this.panelMenu.Controls.Add(this.btnAlarmDashboard3);
             this.panelMenu.Controls.Add(this.btnAlarmDashboard2);
             this.panelMenu.Controls.Add(this.btnDataGain);
             this.panelMenu.Controls.Add(this.btnChipIdCorrection);
@@ -57,9 +59,9 @@
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetting.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSetting.ForeColor = System.Drawing.Color.White;
-            this.btnSetting.Location = new System.Drawing.Point(621, 0);
+            this.btnSetting.Location = new System.Drawing.Point(680, 0);
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(166, 64);
+            this.btnSetting.Size = new System.Drawing.Size(170, 64);
             this.btnSetting.TabIndex = 1;
             this.btnSetting.Text = "Setting";
             this.btnSetting.UseVisualStyleBackColor = true;
@@ -70,9 +72,9 @@
             this.btnAlarmDashboard2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlarmDashboard2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAlarmDashboard2.ForeColor = System.Drawing.Color.White;
-            this.btnAlarmDashboard2.Location = new System.Drawing.Point(455, 0);
+            this.btnAlarmDashboard2.Location = new System.Drawing.Point(340, 0);
             this.btnAlarmDashboard2.Name = "btnAlarmDashboard2";
-            this.btnAlarmDashboard2.Size = new System.Drawing.Size(166, 64);
+            this.btnAlarmDashboard2.Size = new System.Drawing.Size(170, 64);
             this.btnAlarmDashboard2.TabIndex = 5;
             this.btnAlarmDashboard2.Text = "Log : Alarm Dashboard";
             this.btnAlarmDashboard2.UseVisualStyleBackColor = true;
@@ -83,9 +85,9 @@
             this.btnDataGain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDataGain.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnDataGain.ForeColor = System.Drawing.Color.White;
-            this.btnDataGain.Location = new System.Drawing.Point(289, 0);
+            this.btnDataGain.Location = new System.Drawing.Point(170, 0);
             this.btnDataGain.Name = "btnDataGain";
-            this.btnDataGain.Size = new System.Drawing.Size(166, 64);
+            this.btnDataGain.Size = new System.Drawing.Size(170, 64);
             this.btnDataGain.TabIndex = 2;
             this.btnDataGain.Text = "Data Gain";
             this.btnDataGain.UseVisualStyleBackColor = true;
@@ -98,7 +100,7 @@
             this.btnChipIdCorrection.ForeColor = System.Drawing.Color.White;
             this.btnChipIdCorrection.Location = new System.Drawing.Point(0, 0);
             this.btnChipIdCorrection.Name = "btnChipIdCorrection";
-            this.btnChipIdCorrection.Size = new System.Drawing.Size(289, 64);
+            this.btnChipIdCorrection.Size = new System.Drawing.Size(170, 64);
             this.btnChipIdCorrection.TabIndex = 0;
             this.btnChipIdCorrection.Text = "Chip ID Correction";
             this.btnChipIdCorrection.UseVisualStyleBackColor = true;
@@ -111,6 +113,19 @@
             this.panelView.Name = "panelView";
             this.panelView.Size = new System.Drawing.Size(1182, 789);
             this.panelView.TabIndex = 1;
+            // 
+            // btnAlarmDashboard3
+            // 
+            this.btnAlarmDashboard3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAlarmDashboard3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlarmDashboard3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAlarmDashboard3.ForeColor = System.Drawing.Color.White;
+            this.btnAlarmDashboard3.Location = new System.Drawing.Point(510, 0);
+            this.btnAlarmDashboard3.Name = "btnAlarmDashboard3";
+            this.btnAlarmDashboard3.Size = new System.Drawing.Size(170, 64);
+            this.btnAlarmDashboard3.TabIndex = 6;
+            this.btnAlarmDashboard3.Text = "Log : Alarm Dashboard2";
+            this.btnAlarmDashboard3.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -136,6 +151,7 @@
         private System.Windows.Forms.Button btnChipIdCorrection;
         private System.Windows.Forms.Button btnDataGain;
         private System.Windows.Forms.Button btnAlarmDashboard2;
+        private System.Windows.Forms.Button btnAlarmDashboard3;
     }
 }
 

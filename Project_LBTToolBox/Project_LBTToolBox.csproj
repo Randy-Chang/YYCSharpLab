@@ -106,6 +106,7 @@
     <Compile Include="Interfaces\IMainFormPack.cs" />
     <Compile Include="Interfaces\ISettingViewPack.cs" />
     <Compile Include="Scopes\Alarms\Scope.AlarmDashboard2.cs" />
+    <Compile Include="Scopes\Alarms\Scope.AlarmDashboard3.cs" />
     <Compile Include="Scopes\ChipIdCorrections\Scope.ChipIdCorrection.cs" />
     <Compile Include="Scopes\Scope.cs" />
     <Compile Include="Scopes\Scope.DataGainView.cs" />
@@ -150,6 +151,12 @@
     <Compile Include="Views\Alarms\AlarmDashboardView2.Designer.cs">
       <DependentUpon>AlarmDashboardView2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Alarms\AlarmDashboardView3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Alarms\AlarmDashboardView3.Designer.cs">
+      <DependentUpon>AlarmDashboardView3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Alarms\WarnCodeViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Alarms\AlarmDashboardView2.resx">
       <DependentUpon>AlarmDashboardView2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Alarms\AlarmDashboardView3.resx">
+      <DependentUpon>AlarmDashboardView3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Alarms\AlarmSettingsView.resx">
       <DependentUpon>AlarmSettingsView.cs</DependentUpon>
