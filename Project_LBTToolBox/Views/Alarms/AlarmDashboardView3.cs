@@ -7,12 +7,18 @@ namespace Project_LBTToolBox.Views.Alarms
 {
     public partial class AlarmDashboardView3 : UserControl
     {
+        /// <summary>
+        /// 初始化 AlarmDashboardView3 控制項，並套用預設介面設定。
+        /// </summary>
         public AlarmDashboardView3()
         {
             InitializeComponent();
             ConfigureVisualDefaults();
         }
 
+        /// <summary>
+        /// 套用儀表板初始的分割條、表格、KPI 與搜尋介面設定。
+        /// </summary>
         private void ConfigureVisualDefaults()
         {
             splitMain.SplitterWidth = 6;
@@ -27,6 +33,9 @@ namespace Project_LBTToolBox.Views.Alarms
             HookDictionarySearchEvents();
         }
 
+        /// <summary>
+        /// 註冊 WarnCode 搜尋與清除功能所需的本地事件。
+        /// </summary>
         private void HookDictionarySearchEvents()
         {
             pbWarnCodeFilterClear.Click += PbWarnCodeFilterClear_Click;
@@ -37,6 +46,10 @@ namespace Project_LBTToolBox.Views.Alarms
             ConfigureClearIcon(pbWarnCodeSearchClear);
         }
 
+        /// <summary>
+        /// 設定以 PictureBox 呈現的清除圖示外觀與互動行為。
+        /// </summary>
+        /// <param name="pictureBox">要作為清除圖示使用的 PictureBox。</param>
         private void ConfigureClearIcon(PictureBox pictureBox)
         {
             if (pictureBox == null)
@@ -47,28 +60,51 @@ namespace Project_LBTToolBox.Views.Alarms
             pictureBox.Cursor = Cursors.Hand;
         }
 
+        /// <summary>
+        /// 清空 WarnCode 篩選輸入框內容。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">點擊事件參數。</param>
         private void PbWarnCodeFilterClear_Click(object sender, System.EventArgs e)
         {
             txtWarnCodeFilter.Text = string.Empty;
             txtWarnCodeFilter.Focus();
         }
 
+        /// <summary>
+        /// 當搜尋關鍵字變更時，重新套用字典表格的過濾條件。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">文字變更事件參數。</param>
         private void TxtWarnCodeSearch_TextChanged(object sender, System.EventArgs e)
         {
             ApplyWarnCodeSearchFilter();
         }
 
+        /// <summary>
+        /// 清空 WarnCode 字典搜尋輸入框內容。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">點擊事件參數。</param>
         private void PbWarnCodeSearchClear_Click(object sender, System.EventArgs e)
         {
             txtWarnCodeSearch.Text = string.Empty;
             txtWarnCodeSearch.Focus();
         }
 
+        /// <summary>
+        /// 在 WarnCode 表格完成資料繫結後，重新套用搜尋過濾。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">資料繫結完成事件參數。</param>
         private void DgvWareCode_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ApplyWarnCodeSearchFilter();
         }
 
+        /// <summary>
+        /// 依照 Code 或 Message 關鍵字過濾 WarnCode 字典表格。
+        /// </summary>
         private void ApplyWarnCodeSearchFilter()
         {
             if (dgvWareCode.Rows.Count == 0 || txtWarnCodeSearch == null)
@@ -93,6 +129,9 @@ namespace Project_LBTToolBox.Views.Alarms
             }
         }
 
+        /// <summary>
+        /// 套用 KPI 卡片預設的色彩配置。
+        /// </summary>
         private void ConfigureKpiCards()
         {
             gbTotalAlarms.BackColor = Color.FromArgb(244, 248, 252);
@@ -104,6 +143,11 @@ namespace Project_LBTToolBox.Views.Alarms
             lblMaxMachine.ForeColor = Color.FromArgb(145, 102, 18);
         }
 
+        /// <summary>
+        /// 依照目前警報量與主要問題數量，更新 KPI 的前景與背景強調效果。
+        /// </summary>
+        /// <param name="totalAlarms">目前結果中的警報總數。</param>
+        /// <param name="topProblemCount">目前最多次 WarnCode 的出現次數。</param>
         public void UpdateKpiEmphasis(int totalAlarms, int topProblemCount)
         {
             lblTotalAlarms.ForeColor = totalAlarms >= 500 ? Color.FromArgb(173, 51, 44) : Color.FromArgb(28, 77, 123);
@@ -117,6 +161,10 @@ namespace Project_LBTToolBox.Views.Alarms
                 : Color.FromArgb(244, 248, 252);
         }
 
+        /// <summary>
+        /// 套用儀表板表格共用的視覺樣式。
+        /// </summary>
+        /// <param name="grid">要套用樣式的目標表格。</param>
         private void ConfigureGridAppearance(DataGridView grid)
         {
             if (grid == null)

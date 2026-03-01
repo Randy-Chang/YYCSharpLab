@@ -44,6 +44,9 @@ namespace Project_LBTToolBox.Scopes
             public string SelectedWareCode { get; set; }
         }
 
+        /// <summary>
+        /// 建立 AlarmDashboardView3 視圖實例，並綁定所有相關 UI 事件。
+        /// </summary>
         private void InitializeAlarmDashboard3View()
         {
             alarmDashboardView3 = new AlarmDashboardView3();
@@ -75,6 +78,9 @@ namespace Project_LBTToolBox.Scopes
             UpdateAlarmDashboard3MachineList();
         }
 
+        /// <summary>
+        /// 將儲存的來源模式與資料夾設定載入到儀表板畫面。
+        /// </summary>
         private void LoadAlarmDashboard3Preferences()
         {
             AlarmDashboard3Preferences preferences = AlarmDashboard3PreferencesStore.Load();
@@ -86,6 +92,9 @@ namespace Project_LBTToolBox.Scopes
             alarmDashboardView3.RdbLocal.Checked = !isRemote;
         }
 
+        /// <summary>
+        /// 儲存目前儀表板使用的來源模式與來源路徑設定。
+        /// </summary>
         private void SaveAlarmDashboard3Preferences()
         {
             AlarmDashboard3PreferencesStore.Save(new AlarmDashboard3Preferences
@@ -96,11 +105,19 @@ namespace Project_LBTToolBox.Scopes
             });
         }
 
+        /// <summary>
+        /// 取得使用者目前選擇的資料來源模式。
+        /// </summary>
+        /// <returns>目前啟用的資料來源模式。</returns>
         private AlarmDashboard3SourceMode GetAlarmDashboard3SourceMode()
         {
             return alarmDashboardView3.RdbRemote.Checked ? AlarmDashboard3SourceMode.Remote : AlarmDashboard3SourceMode.Local;
         }
 
+        /// <summary>
+        /// 依照目前來源模式取得使用中的來源資料夾路徑。
+        /// </summary>
+        /// <returns>目前選擇的 Remote 或 Local 路徑。</returns>
         private string GetAlarmDashboard3SourcePath()
         {
             return GetAlarmDashboard3SourceMode() == AlarmDashboard3SourceMode.Remote
@@ -108,6 +125,11 @@ namespace Project_LBTToolBox.Scopes
                 : alarmDashboardView3.TxtLocalPath.Text?.Trim() ?? string.Empty;
         }
 
+        /// <summary>
+        /// 解析指定來源資料夾所對應的 SQLite 快取路徑。
+        /// </summary>
+        /// <param name="sourcePath">目前使用的 Log 來源資料夾。</param>
+        /// <returns>該來源所對應的 SQLite 資料庫檔案路徑。</returns>
         private string GetAlarmDashboard3DbPath(string sourcePath)
         {
             if (GetAlarmDashboard3SourceMode() == AlarmDashboard3SourceMode.Local)
@@ -123,6 +145,11 @@ namespace Project_LBTToolBox.Scopes
             return Path.Combine(cacheDir, "alarms-v3.sqlite");
         }
 
+        /// <summary>
+        /// 為遠端來源路徑建立可重現的短快取鍵值。
+        /// </summary>
+        /// <param name="remotePath">要進行雜湊的遠端路徑。</param>
+        /// <returns>用於本機快取資料夾的固定長度大寫雜湊鍵值。</returns>
         private string GetAlarmDashboard3RemoteCacheKey(string remotePath)
         {
             string normalizedPath = (remotePath ?? string.Empty).Trim().ToUpperInvariant();
@@ -139,6 +166,9 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 更新與資料來源相關控制項的啟用狀態與狀態文字。
+        /// </summary>
         private void UpdateAlarmDashboard3SourceUi()
         {
             bool isRemote = GetAlarmDashboard3SourceMode() == AlarmDashboard3SourceMode.Remote;
@@ -161,6 +191,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 在分析工作執行期間，套用忙碌狀態的介面鎖定。
+        /// </summary>
+        /// <param name="isBusy">是否讓儀表板進入忙碌狀態。</param>
+        /// <param name="statusText">要顯示給使用者的狀態文字。</param>
         private void SetAlarmDashboard3BusyState(bool isBusy, string statusText)
         {
             alarmDashboard3IsBusy = isBusy;
@@ -193,6 +228,9 @@ namespace Project_LBTToolBox.Scopes
             UpdateAlarmDashboard3SourceUi();
         }
 
+        /// <summary>
+        /// 從目前選擇的來源資料夾重新載入機台清單。
+        /// </summary>
         private void UpdateAlarmDashboard3MachineList()
         {
             CheckedListBox checkedListBox = alarmDashboardView3.ClbMachines;
@@ -209,6 +247,10 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 從畫面讀取機台勾選清單的狀態。
+        /// </summary>
+        /// <returns>包含機台名稱與是否勾選狀態的清單。</returns>
         private List<(string Name, bool IsChecked)> GetAlarmDashboard3Machines()
         {
             List<(string Name, bool IsChecked)> machines = new List<(string Name, bool IsChecked)>();
@@ -221,6 +263,11 @@ namespace Project_LBTToolBox.Scopes
             return machines;
         }
 
+        /// <summary>
+        /// 處理 Remote 與 Local 來源模式切換事件。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_SourceModeChanged(object sender, EventArgs e)
         {
             UpdateAlarmDashboard3SourceUi();
@@ -229,6 +276,11 @@ namespace Project_LBTToolBox.Scopes
                 SaveAlarmDashboard3Preferences();
         }
 
+        /// <summary>
+        /// 當來源路徑文字變更時，更新來源相關 UI 與機台清單。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_PathTextChanged(object sender, EventArgs e)
         {
             if (alarmDashboard3IsBusy)
@@ -243,6 +295,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 開啟資料夾選擇視窗，並將選取結果指定為 Remote 路徑。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnBrowseRemote_Click(object sender, EventArgs e)
         {
             using (var folderDialog = new YYControls.Dialogs.FolderPickerDialog())
@@ -257,6 +314,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 開啟資料夾選擇視窗，並將選取結果指定為 Local 路徑。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnBrowseLocal_Click(object sender, EventArgs e)
         {
             using (var folderDialog = new YYControls.Dialogs.FolderPickerDialog())
@@ -271,6 +333,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 檢查目前設定的 Remote 路徑是否可連線。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnTestRemote_Click(object sender, EventArgs e)
         {
             string remotePath = alarmDashboardView3.TxtRemotePath.Text?.Trim() ?? string.Empty;
@@ -289,6 +356,11 @@ namespace Project_LBTToolBox.Scopes
                             exists ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
         }
 
+        /// <summary>
+        /// 將機台清單中的項目全部勾選。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnMachinesAll_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < alarmDashboardView3.ClbMachines.Items.Count; i++)
@@ -297,6 +369,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 取消機台清單中的所有勾選。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnMachinesClear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < alarmDashboardView3.ClbMachines.Items.Count; i++)
@@ -305,6 +382,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 切換到上一頁的警報明細資料。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnPrevPage_Click(object sender, EventArgs e)
         {
             if (alarmDashboard3CurrentPage <= 1)
@@ -314,6 +396,11 @@ namespace Project_LBTToolBox.Scopes
             RefreshAlarmDashboard3AlarmGridPage();
         }
 
+        /// <summary>
+        /// 切換到下一頁的警報明細資料。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnNextPage_Click(object sender, EventArgs e)
         {
             int totalPages = GetAlarmDashboard3TotalPages();
@@ -324,6 +411,11 @@ namespace Project_LBTToolBox.Scopes
             RefreshAlarmDashboard3AlarmGridPage();
         }
 
+        /// <summary>
+        /// 將警報明細表格跳轉到指定頁碼。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnJumpPage_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(alarmDashboardView3.TxtJumpPage.Text?.Trim(), out int page))
@@ -337,6 +429,11 @@ namespace Project_LBTToolBox.Scopes
             RefreshAlarmDashboard3AlarmGridPage();
         }
 
+        /// <summary>
+        /// 當使用者在頁碼輸入框按下 Enter 時執行跳頁。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">鍵盤事件參數。</param>
         private void AlarmDashboardView3_TxtJumpPage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
@@ -346,6 +443,11 @@ namespace Project_LBTToolBox.Scopes
             AlarmDashboardView3_BtnJumpPage_Click(sender, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// 開啟放大的 WarnCode 檢視視窗。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_WarnCode_DoubleClick(object sender, EventArgs e)
         {
             if (alarmDashboard3WarnCodes == null || alarmDashboard3WarnCodes.Count == 0)
@@ -360,6 +462,11 @@ namespace Project_LBTToolBox.Scopes
                 viewer.Show();
         }
 
+        /// <summary>
+        /// 當雙擊字典列時，套用該 WarnCode 篩選條件。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">表格儲存格事件參數。</param>
         private void AlarmDashboardView3_DgvWareCode_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -369,21 +476,40 @@ namespace Project_LBTToolBox.Scopes
             ApplyAlarmDashboard3WarnCodeFilter(warnCode);
         }
 
+        /// <summary>
+        /// 套用從外部檢視視窗選取的 WarnCode 篩選條件。
+        /// </summary>
+        /// <param name="warnCode">選取的 WarnCode。</param>
         private void AlarmDashboardView3_Viewer_WarnCodeSelected(string warnCode)
         {
             ApplyAlarmDashboard3WarnCodeFilter(warnCode);
         }
 
+        /// <summary>
+        /// 處理從 Code Frequency 圖表雙擊選取的事件。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">滑鼠事件參數。</param>
         private void AlarmDashboardView3_FpCodeBar_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             TryApplyAlarmDashboard3WarnCodeFromPlot(alarmDashboardView3.FpCodeBar, e);
         }
 
+        /// <summary>
+        /// 處理從 Pareto 圖表雙擊選取的事件。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">滑鼠事件參數。</param>
         private void AlarmDashboardView3_FpPareto_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             TryApplyAlarmDashboard3WarnCodeFromPlot(alarmDashboardView3.FpPareto, e);
         }
 
+        /// <summary>
+        /// 解析圖表中最接近的長條，並將其 WarnCode 套用為目前篩選條件。
+        /// </summary>
+        /// <param name="plot">目標圖表控制項。</param>
+        /// <param name="e">滑鼠事件參數。</param>
         private void TryApplyAlarmDashboard3WarnCodeFromPlot(FormsPlot plot, MouseEventArgs e)
         {
             if (plot == null || e == null || e.Button != MouseButtons.Left || alarmDashboard3TopCodeLabels == null || alarmDashboard3TopCodeLabels.Count == 0)
@@ -401,6 +527,10 @@ namespace Project_LBTToolBox.Scopes
             ApplyAlarmDashboard3WarnCodeFilter(warnCode);
         }
 
+        /// <summary>
+        /// 將 WarnCode 寫入焦點篩選框，並在可執行時立即重新分析。
+        /// </summary>
+        /// <param name="warnCode">要套用的 WarnCode。</param>
         private void ApplyAlarmDashboard3WarnCodeFilter(string warnCode)
         {
             if (string.IsNullOrWhiteSpace(warnCode))
@@ -413,6 +543,11 @@ namespace Project_LBTToolBox.Scopes
                 alarmDashboardView3.BtnApply.PerformClick();
         }
 
+        /// <summary>
+        /// 將目前頁面的警報明細匯出為 CSV 檔案。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnExportAlarmsCsv_Click(object sender, EventArgs e)
         {
             List<AlarmRecord> pageRecords = GetAlarmDashboard3CurrentPageRecords();
@@ -434,6 +569,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 將目前篩選後的全部警報明細匯出為 CSV 檔案。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnExportAllAlarmsCsv_Click(object sender, EventArgs e)
         {
             if (alarmDashboard3CurrentRecords == null || alarmDashboard3CurrentRecords.Count == 0)
@@ -454,6 +594,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 將目前的 WarnCode 字典匯出為 CSV 檔案。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private void AlarmDashboardView3_BtnExportWarnCodesCsv_Click(object sender, EventArgs e)
         {
             if (alarmDashboard3WarnCodes == null || alarmDashboard3WarnCodes.Count == 0)
@@ -474,6 +619,11 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 將警報明細資料列寫入 CSV 檔案。
+        /// </summary>
+        /// <param name="filePath">CSV 輸出檔案路徑。</param>
+        /// <param name="records">要匯出的警報明細資料。</param>
         private void ExportAlarmDashboard3AlarmRecordsCsv(string filePath, List<AlarmRecord> records)
         {
             List<string> lines = new List<string> { "Timestamp,Machine,Level,Code,Message" };
@@ -491,6 +641,11 @@ namespace Project_LBTToolBox.Scopes
             MessageBox.Show($"Alarm records exported:{Environment.NewLine}{filePath}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 將 WarnCode 字典資料列寫入 CSV 檔案。
+        /// </summary>
+        /// <param name="filePath">CSV 輸出檔案路徑。</param>
+        /// <param name="warnCodes">要匯出的 WarnCode 字典資料。</param>
         private void ExportAlarmDashboard3WarnCodesCsv(string filePath, Dictionary<string, string> warnCodes)
         {
             List<string> lines = new List<string> { "Code,Message" };
@@ -505,6 +660,11 @@ namespace Project_LBTToolBox.Scopes
             MessageBox.Show($"Warn codes exported:{Environment.NewLine}{filePath}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 將文字值轉換為可安全輸出的 CSV 格式。
+        /// </summary>
+        /// <param name="value">原始文字值。</param>
+        /// <returns>可安全寫入 CSV 的字串值。</returns>
         private string EscapeAlarmDashboard3Csv(string value)
         {
             string text = value ?? string.Empty;
@@ -517,6 +677,11 @@ namespace Project_LBTToolBox.Scopes
             return text;
         }
 
+        /// <summary>
+        /// 從表格列中擷取第一個非空白的 WarnCode 儲存格值。
+        /// </summary>
+        /// <param name="row">來源表格列。</param>
+        /// <returns>WarnCode 文字；若無資料則回傳空字串。</returns>
         private string GetAlarmDashboard3WarnCodeFromRow(DataGridViewRow row)
         {
             if (row == null)
@@ -532,12 +697,20 @@ namespace Project_LBTToolBox.Scopes
             return string.Empty;
         }
 
+        /// <summary>
+        /// 計算目前警報明細資料的總頁數。
+        /// </summary>
+        /// <returns>總頁數，最小值為 1。</returns>
         private int GetAlarmDashboard3TotalPages()
         {
             int recordCount = alarmDashboard3CurrentRecords?.Count ?? 0;
             return Math.Max(1, (int)Math.Ceiling(recordCount / (double)AlarmDashboard3PageSize));
         }
 
+        /// <summary>
+        /// 取得目前頁碼對應的警報明細資料。
+        /// </summary>
+        /// <returns>目前頁面的警報明細集合。</returns>
         private List<AlarmRecord> GetAlarmDashboard3CurrentPageRecords()
         {
             List<AlarmRecord> source = alarmDashboard3CurrentRecords ?? new List<AlarmRecord>();
@@ -547,6 +720,9 @@ namespace Project_LBTToolBox.Scopes
                 .ToList();
         }
 
+        /// <summary>
+        /// 刷新警報明細表格，顯示目前頁面與分頁狀態。
+        /// </summary>
         private void RefreshAlarmDashboard3AlarmGridPage()
         {
             List<AlarmRecord> source = alarmDashboard3CurrentRecords ?? new List<AlarmRecord>();
@@ -569,6 +745,11 @@ namespace Project_LBTToolBox.Scopes
             alarmDashboardView3.BtnNextPage.Enabled = !alarmDashboard3IsBusy && alarmDashboard3CurrentPage < totalPages;
         }
 
+        /// <summary>
+        /// 依照目前來源、篩選條件與選定 WarnCode 執行完整分析流程。
+        /// </summary>
+        /// <param name="sender">事件來源物件。</param>
+        /// <param name="e">事件參數。</param>
         private async void AlarmDashboardView3_BtnApply_Click(object sender, EventArgs e)
         {
             if (alarmDashboard3IsBusy)
@@ -614,6 +795,17 @@ namespace Project_LBTToolBox.Scopes
             }
         }
 
+        /// <summary>
+        /// 執行 AlarmDashboardView3 所需的匯入、查詢與統計建立流程。
+        /// </summary>
+        /// <param name="sourcePath">Log 來源根路徑。</param>
+        /// <param name="sqliteDbPath">SQLite 快取檔案路徑。</param>
+        /// <param name="isFilterDate">是否啟用日期篩選。</param>
+        /// <param name="dateTimeFrom">篩選起始時間（含）。</param>
+        /// <param name="dateTimeTo">篩選結束時間（含）。</param>
+        /// <param name="selectedMachines">選取的機台名稱清單。</param>
+        /// <param name="selectedWareCode">選取的 WarnCode 篩選值。</param>
+        /// <returns>用來刷新儀表板的完整分析結果。</returns>
         private AlarmDashboard3AnalysisResult ExecuteAlarmDashboard3Analysis(
             string sourcePath,
             string sqliteDbPath,
@@ -657,6 +849,10 @@ namespace Project_LBTToolBox.Scopes
             };
         }
 
+        /// <summary>
+        /// 將分析結果套用到 View3 的所有元件，包含表格、KPI 與圖表。
+        /// </summary>
+        /// <param name="result">分析完成後的結果物件。</param>
         private void UpdateAlarmDashboard3AnalysisResult(AlarmDashboard3AnalysisResult result)
         {
             if (result == null)
