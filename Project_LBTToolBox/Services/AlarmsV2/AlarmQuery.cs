@@ -22,5 +22,8 @@ namespace Project_LBTToolBox.Services.AlarmsV2
 
         /// <summary>等級過濾，預設 WARN。</summary>
         public string Level { get; set; } = "WARN";
+
+        /// <summary>指定 WareCode；空字串代表不限制。</summary>
+        public string WareCode { get; set; }
     }
 }

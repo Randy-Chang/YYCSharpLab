@@ -24,6 +24,7 @@ namespace Project_LBTToolBox.Views.Alarms
         public CheckedListBox ClbMachines => clbMachines;
         public Button BtnMachinesAll => btnMachinesAll;
         public Button BtnMachinesClear => btnMachinesClear;
+        public TextBox TxtWareCodeFilter => txtWareCodeFilter;
 
         public Button BtnApply => btnApply;
 

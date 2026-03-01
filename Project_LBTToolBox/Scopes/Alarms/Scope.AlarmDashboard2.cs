@@ -134,6 +134,7 @@ namespace Project_LBTToolBox.Scopes
                 .Where(m => m.IsChecked)
                 .Select(m => m.Name)
                 .ToList();
+            string selectedWareCode = (view2.TxtWareCodeFilter.Text ?? string.Empty).Trim();
 
             List<AlarmRecord> alarmRecords;
             Dictionary<string, string> warnCodeWithMessage;
@@ -154,7 +155,8 @@ namespace Project_LBTToolBox.Scopes
                     DateFrom = dateTimeFrom,
                     DateTo = dateTimeTo,
                     SelectedMachines = selectedMachines,
-                    Level = "WARN"
+                    Level = "WARN",
+                    WareCode = selectedWareCode
                 };
 
                 alarmRecords = queryService.QueryAlarmRecords(query);
@@ -178,8 +180,18 @@ namespace Project_LBTToolBox.Scopes
                 // 舊流程：動態產生 WareCode
                 AlarmCodeHelper.AttachedWarnCode(ref alarmRecords, out warnCodeWithMessage);
 
+                if (!string.IsNullOrWhiteSpace(selectedWareCode))
+                    alarmRecords = alarmRecords.Where(r => string.Equals(r.Code, selectedWareCode, StringComparison.OrdinalIgnoreCase)).ToList();
+
                 MessageBox.Show($"SQLite 流程啟用失敗，已切回舊版讀檔。{Environment.NewLine}{ex}",
                                 "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (!string.IsNullOrWhiteSpace(selectedWareCode))
+            {
+                warnCodeWithMessage = warnCodeWithMessage
+                    .Where(kv => string.Equals(kv.Key, selectedWareCode, StringComparison.OrdinalIgnoreCase))
+                    .ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.OrdinalIgnoreCase);
             }
 
             // 顯示在 DataGridView - Log Table
@@ -209,11 +221,11 @@ namespace Project_LBTToolBox.Scopes
             view2.LblMaxAlarmCodeTimes.Text = top5Codes.Count > 0 ? $"(Times {top5Codes[0].Value})" : "(Times N/A)";
             view2.LblMaxMachine.Text = maxMachine;
 
-
-            AlarmChartsV4.PlotCodeBar(view2.FpCodeBar, alarmStatistics.CountsByCode, topN: 10);
-            AlarmChartsV4.PlotMachineBar(view2.FpMachineBar, alarmStatistics.CountsByMachine, topN: 20);
-            AlarmChartsV4.PlotDailyTrend(view2.FpDailyTrend, alarmStatistics.DailyCounts);
-            AlarmChartsV4.PlotHourHistogram(view2.FpHourHistogram, alarmStatistics.HourOfDayHistogram);
+            string codeSuffix = string.IsNullOrWhiteSpace(selectedWareCode) ? "" : $" ({selectedWareCode})";
+            AlarmChartsV4.PlotCodeBar(view2.FpCodeBar, alarmStatistics.CountsByCode, topN: 10, title: "Code Frequency" + codeSuffix);
+            AlarmChartsV4.PlotMachineBar(view2.FpMachineBar, alarmStatistics.CountsByMachine, topN: 20, title: "Machine Distribution" + codeSuffix);
+            AlarmChartsV4.PlotDailyTrend(view2.FpDailyTrend, alarmStatistics.DailyCounts, title: "Daily Trend" + codeSuffix);
+            AlarmChartsV4.PlotHourHistogram(view2.FpHourHistogram, alarmStatistics.HourOfDayHistogram, title: "Hour-of-Day Histogram" + codeSuffix);
 
             MessageBox.Show("Applied.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

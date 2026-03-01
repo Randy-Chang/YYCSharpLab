@@ -182,6 +182,12 @@ WHERE 1 = 1
                     AddParam(cmd, "@level", query.Level);
                 }
 
+                if (!string.IsNullOrWhiteSpace(query.WareCode))
+                {
+                    sql.Append(" AND w.code = @wareCode");
+                    AddParam(cmd, "@wareCode", query.WareCode.Trim());
+                }
+
                 if (query.UseDateFilter)
                 {
                     sql.Append(" AND e.day_local >= @dateFrom AND e.day_local <= @dateTo");
