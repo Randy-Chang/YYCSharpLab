@@ -124,7 +124,7 @@
             this.btnAlarmDashboard3.Name = "btnAlarmDashboard3";
             this.btnAlarmDashboard3.Size = new System.Drawing.Size(170, 64);
             this.btnAlarmDashboard3.TabIndex = 6;
-            this.btnAlarmDashboard3.Text = "Log : Alarm Dashboard2";
+            this.btnAlarmDashboard3.Text = "Log : Alarm Dashboard3";
             this.btnAlarmDashboard3.UseVisualStyleBackColor = true;
             // 
             // MainForm

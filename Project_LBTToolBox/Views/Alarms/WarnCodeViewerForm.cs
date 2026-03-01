@@ -13,6 +13,7 @@ namespace Project_LBTToolBox.Views.Alarms
     public class WarnCodeViewerForm : Form
     {
         private readonly DataGridView _dgvWarnCodes;
+        public event Action<string> WarnCodeSelected;
 
         /// <summary>
         /// 建立 Warn Code 檢視視窗。
@@ -34,6 +35,23 @@ namespace Project_LBTToolBox.Views.Alarms
 
             AlarmGridHelper.ShowWarnCodeInGrid(_dgvWarnCodes, warnCodeWithMessage);
             ConfigureColumns();
+            _dgvWarnCodes.CellDoubleClick += DgvWarnCodes_CellDoubleClick;
+        }
+
+        private void DgvWarnCodes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= _dgvWarnCodes.Rows.Count)
+                return;
+
+            DataGridViewRow row = _dgvWarnCodes.Rows[e.RowIndex];
+            string code = row.Cells.Cast<DataGridViewCell>()
+                .Select(cell => cell.Value?.ToString())
+                .FirstOrDefault(value => !string.IsNullOrWhiteSpace(value))
+                ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(code))
+                return;
+
+            WarnCodeSelected?.Invoke(code.Trim());
         }
 
         private void ConfigureColumns()

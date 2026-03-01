@@ -130,6 +130,7 @@
     <Compile Include="Services\AlarmsV2\AlarmQueryService.cs" />
     <Compile Include="Services\AlarmsV2\IAlarmRepository.cs" />
     <Compile Include="Services\AlarmsV2\SQLiteAlarmRepository.cs" />
+    <Compile Include="Services\AlarmsV3\AlarmDashboard3Preferences.cs" />
     <Compile Include="Services\ChipIdCorrection\ChipRecord.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IUIFeedback.cs" />
     <Compile Include="Services\ChipIdCorrection\Interface\IDataFileEditor.cs" />
