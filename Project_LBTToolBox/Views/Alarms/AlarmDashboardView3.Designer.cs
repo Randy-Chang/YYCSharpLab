@@ -16,16 +16,10 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpRoot = new System.Windows.Forms.TableLayoutPanel();
             this.gbSource = new System.Windows.Forms.GroupBox();
             this.tlpSource = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSourceMode = new System.Windows.Forms.Label();
             this.flpSourceMode = new System.Windows.Forms.FlowLayoutPanel();
             this.rdbRemote = new System.Windows.Forms.RadioButton();
             this.rdbLocal = new System.Windows.Forms.RadioButton();
-            this.btnApply = new System.Windows.Forms.Button();
-            this.gbExportActions = new System.Windows.Forms.GroupBox();
-            this.flpExportButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnExportWarnCodesCsv = new System.Windows.Forms.Button();
-            this.btnExportAlarmsCsv = new System.Windows.Forms.Button();
-            this.btnExportAllAlarmsCsv = new System.Windows.Forms.Button();
-            this.lblSourceMode = new System.Windows.Forms.Label();
             this.lblRemotePath = new System.Windows.Forms.Label();
             this.txtRemotePath = new System.Windows.Forms.TextBox();
             this.btnBrowseRemote = new System.Windows.Forms.Button();
@@ -33,6 +27,12 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblLocalPath = new System.Windows.Forms.Label();
             this.txtLocalPath = new System.Windows.Forms.TextBox();
             this.btnBrowseLocal = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.gbExportActions = new System.Windows.Forms.GroupBox();
+            this.flpExportButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnExportWarnCodesCsv = new System.Windows.Forms.Button();
+            this.btnExportAlarmsCsv = new System.Windows.Forms.Button();
+            this.btnExportAllAlarmsCsv = new System.Windows.Forms.Button();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.tlpFilters = new System.Windows.Forms.TableLayoutPanel();
@@ -215,6 +215,18 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpSource.Size = new System.Drawing.Size(1360, 101);
             this.tlpSource.TabIndex = 0;
             // 
+            // lblSourceMode
+            // 
+            this.lblSourceMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSourceMode.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblSourceMode.Location = new System.Drawing.Point(0, 0);
+            this.lblSourceMode.Margin = new System.Windows.Forms.Padding(0);
+            this.lblSourceMode.Name = "lblSourceMode";
+            this.lblSourceMode.Size = new System.Drawing.Size(122, 34);
+            this.lblSourceMode.TabIndex = 0;
+            this.lblSourceMode.Text = "Source Mode";
+            this.lblSourceMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // flpSourceMode
             // 
             this.tlpSource.SetColumnSpan(this.flpSourceMode, 3);
@@ -251,91 +263,6 @@ namespace Project_LBTToolBox.Views.Alarms
             this.rdbLocal.TabIndex = 1;
             this.rdbLocal.Text = "Local";
             this.rdbLocal.UseVisualStyleBackColor = true;
-            // 
-            // btnApply
-            // 
-            this.btnApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnApply.Font = new System.Drawing.Font("微軟正黑體", 11.5F, System.Drawing.FontStyle.Bold);
-            this.btnApply.Location = new System.Drawing.Point(980, 6);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(16, 6, 10, 6);
-            this.btnApply.Name = "btnApply";
-            this.tlpSource.SetRowSpan(this.btnApply, 3);
-            this.btnApply.Size = new System.Drawing.Size(106, 94);
-            this.btnApply.TabIndex = 9;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            // 
-            // gbExportActions
-            // 
-            this.gbExportActions.Controls.Add(this.flpExportButtons);
-            this.gbExportActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbExportActions.Font = new System.Drawing.Font("微軟正黑體", 9.8F, System.Drawing.FontStyle.Bold);
-            this.gbExportActions.Location = new System.Drawing.Point(1096, 3);
-            this.gbExportActions.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.gbExportActions.Name = "gbExportActions";
-            this.tlpSource.SetRowSpan(this.gbExportActions, 3);
-            this.gbExportActions.Size = new System.Drawing.Size(264, 100);
-            this.gbExportActions.TabIndex = 10;
-            this.gbExportActions.TabStop = false;
-            this.gbExportActions.Text = "Export";
-            // 
-            // flpExportButtons
-            // 
-            this.flpExportButtons.Controls.Add(this.btnExportWarnCodesCsv);
-            this.flpExportButtons.Controls.Add(this.btnExportAlarmsCsv);
-            this.flpExportButtons.Controls.Add(this.btnExportAllAlarmsCsv);
-            this.flpExportButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpExportButtons.Location = new System.Drawing.Point(3, 25);
-            this.flpExportButtons.Name = "flpExportButtons";
-            this.flpExportButtons.Padding = new System.Windows.Forms.Padding(10, 4, 10, 4);
-            this.flpExportButtons.Size = new System.Drawing.Size(258, 72);
-            this.flpExportButtons.TabIndex = 0;
-            this.flpExportButtons.WrapContents = false;
-            // 
-            // btnExportWarnCodesCsv
-            // 
-            this.btnExportWarnCodesCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
-            this.btnExportWarnCodesCsv.Location = new System.Drawing.Point(10, 4);
-            this.btnExportWarnCodesCsv.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.btnExportWarnCodesCsv.Name = "btnExportWarnCodesCsv";
-            this.btnExportWarnCodesCsv.Size = new System.Drawing.Size(70, 29);
-            this.btnExportWarnCodesCsv.TabIndex = 0;
-            this.btnExportWarnCodesCsv.Text = "Codes";
-            this.btnExportWarnCodesCsv.UseVisualStyleBackColor = true;
-            // 
-            // btnExportAlarmsCsv
-            // 
-            this.btnExportAlarmsCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
-            this.btnExportAlarmsCsv.Location = new System.Drawing.Point(88, 4);
-            this.btnExportAlarmsCsv.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.btnExportAlarmsCsv.Name = "btnExportAlarmsCsv";
-            this.btnExportAlarmsCsv.Size = new System.Drawing.Size(70, 29);
-            this.btnExportAlarmsCsv.TabIndex = 1;
-            this.btnExportAlarmsCsv.Text = "Page";
-            this.btnExportAlarmsCsv.UseVisualStyleBackColor = true;
-            // 
-            // btnExportAllAlarmsCsv
-            // 
-            this.btnExportAllAlarmsCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
-            this.btnExportAllAlarmsCsv.Location = new System.Drawing.Point(166, 4);
-            this.btnExportAllAlarmsCsv.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExportAllAlarmsCsv.Name = "btnExportAllAlarmsCsv";
-            this.btnExportAllAlarmsCsv.Size = new System.Drawing.Size(70, 29);
-            this.btnExportAllAlarmsCsv.TabIndex = 2;
-            this.btnExportAllAlarmsCsv.Text = "All";
-            this.btnExportAllAlarmsCsv.UseVisualStyleBackColor = true;
-            // 
-            // lblSourceMode
-            // 
-            this.lblSourceMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSourceMode.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblSourceMode.Location = new System.Drawing.Point(0, 0);
-            this.lblSourceMode.Margin = new System.Windows.Forms.Padding(0);
-            this.lblSourceMode.Name = "lblSourceMode";
-            this.lblSourceMode.Size = new System.Drawing.Size(122, 34);
-            this.lblSourceMode.TabIndex = 0;
-            this.lblSourceMode.Text = "Source Mode";
-            this.lblSourceMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRemotePath
             // 
@@ -416,6 +343,79 @@ namespace Project_LBTToolBox.Views.Alarms
             this.btnBrowseLocal.TabIndex = 8;
             this.btnBrowseLocal.Text = "Browse";
             this.btnBrowseLocal.UseVisualStyleBackColor = true;
+            // 
+            // btnApply
+            // 
+            this.btnApply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnApply.Font = new System.Drawing.Font("微軟正黑體", 11.5F, System.Drawing.FontStyle.Bold);
+            this.btnApply.Location = new System.Drawing.Point(980, 6);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(16, 6, 10, 6);
+            this.btnApply.Name = "btnApply";
+            this.tlpSource.SetRowSpan(this.btnApply, 3);
+            this.btnApply.Size = new System.Drawing.Size(106, 94);
+            this.btnApply.TabIndex = 9;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            // 
+            // gbExportActions
+            // 
+            this.gbExportActions.Controls.Add(this.flpExportButtons);
+            this.gbExportActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbExportActions.Font = new System.Drawing.Font("微軟正黑體", 9.8F, System.Drawing.FontStyle.Bold);
+            this.gbExportActions.Location = new System.Drawing.Point(1096, 3);
+            this.gbExportActions.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.gbExportActions.Name = "gbExportActions";
+            this.tlpSource.SetRowSpan(this.gbExportActions, 3);
+            this.gbExportActions.Size = new System.Drawing.Size(264, 100);
+            this.gbExportActions.TabIndex = 10;
+            this.gbExportActions.TabStop = false;
+            this.gbExportActions.Text = "Export";
+            // 
+            // flpExportButtons
+            // 
+            this.flpExportButtons.Controls.Add(this.btnExportWarnCodesCsv);
+            this.flpExportButtons.Controls.Add(this.btnExportAlarmsCsv);
+            this.flpExportButtons.Controls.Add(this.btnExportAllAlarmsCsv);
+            this.flpExportButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpExportButtons.Location = new System.Drawing.Point(3, 25);
+            this.flpExportButtons.Name = "flpExportButtons";
+            this.flpExportButtons.Padding = new System.Windows.Forms.Padding(10, 4, 10, 4);
+            this.flpExportButtons.Size = new System.Drawing.Size(258, 72);
+            this.flpExportButtons.TabIndex = 0;
+            this.flpExportButtons.WrapContents = false;
+            // 
+            // btnExportWarnCodesCsv
+            // 
+            this.btnExportWarnCodesCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
+            this.btnExportWarnCodesCsv.Location = new System.Drawing.Point(10, 4);
+            this.btnExportWarnCodesCsv.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.btnExportWarnCodesCsv.Name = "btnExportWarnCodesCsv";
+            this.btnExportWarnCodesCsv.Size = new System.Drawing.Size(70, 29);
+            this.btnExportWarnCodesCsv.TabIndex = 0;
+            this.btnExportWarnCodesCsv.Text = "Codes";
+            this.btnExportWarnCodesCsv.UseVisualStyleBackColor = true;
+            // 
+            // btnExportAlarmsCsv
+            // 
+            this.btnExportAlarmsCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
+            this.btnExportAlarmsCsv.Location = new System.Drawing.Point(88, 4);
+            this.btnExportAlarmsCsv.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.btnExportAlarmsCsv.Name = "btnExportAlarmsCsv";
+            this.btnExportAlarmsCsv.Size = new System.Drawing.Size(70, 29);
+            this.btnExportAlarmsCsv.TabIndex = 1;
+            this.btnExportAlarmsCsv.Text = "Page";
+            this.btnExportAlarmsCsv.UseVisualStyleBackColor = true;
+            // 
+            // btnExportAllAlarmsCsv
+            // 
+            this.btnExportAllAlarmsCsv.Font = new System.Drawing.Font("微軟正黑體", 9.2F);
+            this.btnExportAllAlarmsCsv.Location = new System.Drawing.Point(166, 4);
+            this.btnExportAllAlarmsCsv.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExportAllAlarmsCsv.Name = "btnExportAllAlarmsCsv";
+            this.btnExportAllAlarmsCsv.Size = new System.Drawing.Size(70, 29);
+            this.btnExportAllAlarmsCsv.TabIndex = 2;
+            this.btnExportAllAlarmsCsv.Text = "All";
+            this.btnExportAllAlarmsCsv.UseVisualStyleBackColor = true;
             // 
             // splitMain
             // 
@@ -512,7 +512,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.dtpFrom.Font = new System.Drawing.Font("微軟正黑體", 10.2F);
             this.dtpFrom.Location = new System.Drawing.Point(0, 69);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(346, 30);
+            this.dtpFrom.Size = new System.Drawing.Size(263, 30);
             this.dtpFrom.TabIndex = 2;
             // 
             // lblEndDate
@@ -532,7 +532,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.dtpTo.Font = new System.Drawing.Font("微軟正黑體", 10.2F);
             this.dtpTo.Location = new System.Drawing.Point(0, 135);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(346, 30);
+            this.dtpTo.Size = new System.Drawing.Size(263, 30);
             this.dtpTo.TabIndex = 4;
             // 
             // panelMachines
@@ -567,7 +567,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.clbMachines.IntegralHeight = false;
             this.clbMachines.Location = new System.Drawing.Point(0, 31);
             this.clbMachines.Name = "clbMachines";
-            this.clbMachines.Size = new System.Drawing.Size(352, 427);
+            this.clbMachines.Size = new System.Drawing.Size(263, 251);
             this.clbMachines.TabIndex = 1;
             // 
             // panelMachineActions
@@ -607,7 +607,6 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.panelCodeFilter.Controls.Add(this.lblWarnCodeFilter);
             this.panelCodeFilter.Controls.Add(this.panelWarnCodeFilterInput);
-            this.panelCodeFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCodeFilter.Location = new System.Drawing.Point(0, 489);
             this.panelCodeFilter.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.panelCodeFilter.Name = "panelCodeFilter";
@@ -632,10 +631,10 @@ namespace Project_LBTToolBox.Views.Alarms
             this.panelWarnCodeFilterInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWarnCodeFilterInput.Controls.Add(this.txtWarnCodeFilter);
             this.panelWarnCodeFilterInput.Controls.Add(this.pbWarnCodeFilterClear);
-            this.panelWarnCodeFilterInput.Location = new System.Drawing.Point(0, 35);
+            this.panelWarnCodeFilterInput.Location = new System.Drawing.Point(4, 35);
             this.panelWarnCodeFilterInput.Name = "panelWarnCodeFilterInput";
             this.panelWarnCodeFilterInput.Padding = new System.Windows.Forms.Padding(8, 7, 4, 7);
-            this.panelWarnCodeFilterInput.Size = new System.Drawing.Size(346, 36);
+            this.panelWarnCodeFilterInput.Size = new System.Drawing.Size(259, 36);
             this.panelWarnCodeFilterInput.TabIndex = 1;
             // 
             // txtWarnCodeFilter
@@ -645,7 +644,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.txtWarnCodeFilter.Font = new System.Drawing.Font("微軟正黑體", 10.2F);
             this.txtWarnCodeFilter.Location = new System.Drawing.Point(8, 7);
             this.txtWarnCodeFilter.Name = "txtWarnCodeFilter";
-            this.txtWarnCodeFilter.Size = new System.Drawing.Size(310, 23);
+            this.txtWarnCodeFilter.Size = new System.Drawing.Size(223, 23);
             this.txtWarnCodeFilter.TabIndex = 0;
             // 
             // pbWarnCodeFilterClear
@@ -653,7 +652,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pbWarnCodeFilterClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbWarnCodeFilterClear.Dock = System.Windows.Forms.DockStyle.Right;
             this.pbWarnCodeFilterClear.Image = global::Project_LBTToolBox.Properties.Resources.Cross_mark_icon_in_red;
-            this.pbWarnCodeFilterClear.Location = new System.Drawing.Point(318, 7);
+            this.pbWarnCodeFilterClear.Location = new System.Drawing.Point(231, 7);
             this.pbWarnCodeFilterClear.Name = "pbWarnCodeFilterClear";
             this.pbWarnCodeFilterClear.Size = new System.Drawing.Size(22, 20);
             this.pbWarnCodeFilterClear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -703,8 +702,8 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpRight.Location = new System.Drawing.Point(0, 0);
             this.tlpRight.Name = "tlpRight";
             this.tlpRight.RowCount = 3;
-            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tlpRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpRight.Size = new System.Drawing.Size(1080, 724);
             this.tlpRight.TabIndex = 0;
@@ -718,7 +717,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.panelStatus.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            this.panelStatus.Size = new System.Drawing.Size(1080, 44);
+            this.panelStatus.Size = new System.Drawing.Size(1080, 42);
             this.panelStatus.TabIndex = 0;
             // 
             // tlpStatus
@@ -739,8 +738,8 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpStatus.Location = new System.Drawing.Point(12, 8);
             this.tlpStatus.Name = "tlpStatus";
-            this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpStatus.Size = new System.Drawing.Size(1056, 28);
+            this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tlpStatus.Size = new System.Drawing.Size(1056, 26);
             this.tlpStatus.TabIndex = 0;
             // 
             // lblCurrentModeTitle
@@ -751,7 +750,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblCurrentModeTitle.Location = new System.Drawing.Point(0, 0);
             this.lblCurrentModeTitle.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.lblCurrentModeTitle.Name = "lblCurrentModeTitle";
-            this.lblCurrentModeTitle.Size = new System.Drawing.Size(100, 28);
+            this.lblCurrentModeTitle.Size = new System.Drawing.Size(100, 26);
             this.lblCurrentModeTitle.TabIndex = 0;
             this.lblCurrentModeTitle.Text = "Run Mode:";
             this.lblCurrentModeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -764,7 +763,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblCurrentMode.Location = new System.Drawing.Point(108, 0);
             this.lblCurrentMode.Margin = new System.Windows.Forms.Padding(0, 0, 14, 0);
             this.lblCurrentMode.Name = "lblCurrentMode";
-            this.lblCurrentMode.Size = new System.Drawing.Size(104, 28);
+            this.lblCurrentMode.Size = new System.Drawing.Size(104, 26);
             this.lblCurrentMode.TabIndex = 1;
             this.lblCurrentMode.Text = "Remote";
             this.lblCurrentMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -777,7 +776,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblDatabasePathTitle.Location = new System.Drawing.Point(226, 0);
             this.lblDatabasePathTitle.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.lblDatabasePathTitle.Name = "lblDatabasePathTitle";
-            this.lblDatabasePathTitle.Size = new System.Drawing.Size(81, 28);
+            this.lblDatabasePathTitle.Size = new System.Drawing.Size(81, 26);
             this.lblDatabasePathTitle.TabIndex = 2;
             this.lblDatabasePathTitle.Text = "DB Path:";
             this.lblDatabasePathTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -790,7 +789,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblDatabasePath.Location = new System.Drawing.Point(315, 0);
             this.lblDatabasePath.Margin = new System.Windows.Forms.Padding(0, 0, 14, 0);
             this.lblDatabasePath.Name = "lblDatabasePath";
-            this.lblDatabasePath.Size = new System.Drawing.Size(402, 28);
+            this.lblDatabasePath.Size = new System.Drawing.Size(402, 26);
             this.lblDatabasePath.TabIndex = 3;
             this.lblDatabasePath.Text = "-";
             this.lblDatabasePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -803,7 +802,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblSourceStatusTitle.Location = new System.Drawing.Point(731, 0);
             this.lblSourceStatusTitle.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.lblSourceStatusTitle.Name = "lblSourceStatusTitle";
-            this.lblSourceStatusTitle.Size = new System.Drawing.Size(67, 28);
+            this.lblSourceStatusTitle.Size = new System.Drawing.Size(67, 26);
             this.lblSourceStatusTitle.TabIndex = 4;
             this.lblSourceStatusTitle.Text = "Status:";
             this.lblSourceStatusTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -815,7 +814,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.lblSourceStatus.Font = new System.Drawing.Font("微軟正黑體", 10.2F);
             this.lblSourceStatus.Location = new System.Drawing.Point(809, 0);
             this.lblSourceStatus.Name = "lblSourceStatus";
-            this.lblSourceStatus.Size = new System.Drawing.Size(244, 28);
+            this.lblSourceStatus.Size = new System.Drawing.Size(244, 26);
             this.lblSourceStatus.TabIndex = 5;
             this.lblSourceStatus.Text = "Idle";
             this.lblSourceStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -830,11 +829,11 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpKpi.Controls.Add(this.gbMaxAlarm, 1, 0);
             this.tlpKpi.Controls.Add(this.gbMaxMachine, 2, 0);
             this.tlpKpi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpKpi.Location = new System.Drawing.Point(0, 52);
+            this.tlpKpi.Location = new System.Drawing.Point(0, 50);
             this.tlpKpi.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.tlpKpi.Name = "tlpKpi";
-            this.tlpKpi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpKpi.Size = new System.Drawing.Size(1080, 108);
+            this.tlpKpi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpKpi.Size = new System.Drawing.Size(1080, 62);
             this.tlpKpi.TabIndex = 1;
             // 
             // gbTotalAlarms
@@ -845,7 +844,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbTotalAlarms.Location = new System.Drawing.Point(0, 0);
             this.gbTotalAlarms.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.gbTotalAlarms.Name = "gbTotalAlarms";
-            this.gbTotalAlarms.Size = new System.Drawing.Size(352, 108);
+            this.gbTotalAlarms.Size = new System.Drawing.Size(352, 97);
             this.gbTotalAlarms.TabIndex = 0;
             this.gbTotalAlarms.TabStop = false;
             this.gbTotalAlarms.Text = "Current Alarm Count";
@@ -854,7 +853,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.lblTotalAlarms.AutoSize = true;
             this.lblTotalAlarms.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Bold);
-            this.lblTotalAlarms.Location = new System.Drawing.Point(16, 37);
+            this.lblTotalAlarms.Location = new System.Drawing.Point(10, 27);
             this.lblTotalAlarms.Name = "lblTotalAlarms";
             this.lblTotalAlarms.Size = new System.Drawing.Size(74, 42);
             this.lblTotalAlarms.TabIndex = 0;
@@ -869,7 +868,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbMaxAlarm.Location = new System.Drawing.Point(360, 0);
             this.gbMaxAlarm.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.gbMaxAlarm.Name = "gbMaxAlarm";
-            this.gbMaxAlarm.Size = new System.Drawing.Size(352, 108);
+            this.gbMaxAlarm.Size = new System.Drawing.Size(352, 97);
             this.gbMaxAlarm.TabIndex = 1;
             this.gbMaxAlarm.TabStop = false;
             this.gbMaxAlarm.Text = "Top Problem Right Now";
@@ -878,7 +877,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.lblMaxAlarmCode.AutoSize = true;
             this.lblMaxAlarmCode.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Bold);
-            this.lblMaxAlarmCode.Location = new System.Drawing.Point(16, 26);
+            this.lblMaxAlarmCode.Location = new System.Drawing.Point(11, 25);
             this.lblMaxAlarmCode.Name = "lblMaxAlarmCode";
             this.lblMaxAlarmCode.Size = new System.Drawing.Size(74, 42);
             this.lblMaxAlarmCode.TabIndex = 0;
@@ -888,7 +887,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.lblMaxAlarmCodeTimes.AutoSize = true;
             this.lblMaxAlarmCodeTimes.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblMaxAlarmCodeTimes.Location = new System.Drawing.Point(18, 69);
+            this.lblMaxAlarmCodeTimes.Location = new System.Drawing.Point(114, 35);
             this.lblMaxAlarmCodeTimes.Name = "lblMaxAlarmCodeTimes";
             this.lblMaxAlarmCodeTimes.Size = new System.Drawing.Size(96, 22);
             this.lblMaxAlarmCodeTimes.TabIndex = 1;
@@ -901,7 +900,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbMaxMachine.Font = new System.Drawing.Font("微軟正黑體", 10.8F);
             this.gbMaxMachine.Location = new System.Drawing.Point(723, 3);
             this.gbMaxMachine.Name = "gbMaxMachine";
-            this.gbMaxMachine.Size = new System.Drawing.Size(354, 102);
+            this.gbMaxMachine.Size = new System.Drawing.Size(354, 91);
             this.gbMaxMachine.TabIndex = 2;
             this.gbMaxMachine.TabStop = false;
             this.gbMaxMachine.Text = "Most Affected Machine";
@@ -910,7 +909,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.lblMaxMachine.AutoSize = true;
             this.lblMaxMachine.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Bold);
-            this.lblMaxMachine.Location = new System.Drawing.Point(16, 37);
+            this.lblMaxMachine.Location = new System.Drawing.Point(6, 22);
             this.lblMaxMachine.Name = "lblMaxMachine";
             this.lblMaxMachine.Size = new System.Drawing.Size(74, 42);
             this.lblMaxMachine.TabIndex = 0;
@@ -919,7 +918,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // splitRight
             // 
             this.splitRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitRight.Location = new System.Drawing.Point(3, 171);
+            this.splitRight.Location = new System.Drawing.Point(3, 123);
             this.splitRight.Name = "splitRight";
             this.splitRight.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -932,8 +931,8 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.splitRight.Panel2.Controls.Add(this.splitData);
             this.splitRight.Panel2MinSize = 220;
-            this.splitRight.Size = new System.Drawing.Size(1074, 550);
-            this.splitRight.SplitterDistance = 298;
+            this.splitRight.Size = new System.Drawing.Size(1074, 598);
+            this.splitRight.SplitterDistance = 349;
             this.splitRight.TabIndex = 2;
             // 
             // tcCharts
@@ -945,7 +944,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tcCharts.Location = new System.Drawing.Point(0, 0);
             this.tcCharts.Name = "tcCharts";
             this.tcCharts.SelectedIndex = 0;
-            this.tcCharts.Size = new System.Drawing.Size(1074, 298);
+            this.tcCharts.Size = new System.Drawing.Size(1074, 349);
             this.tcCharts.TabIndex = 0;
             // 
             // tpOverview
@@ -954,7 +953,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tpOverview.Location = new System.Drawing.Point(4, 31);
             this.tpOverview.Name = "tpOverview";
             this.tpOverview.Padding = new System.Windows.Forms.Padding(8);
-            this.tpOverview.Size = new System.Drawing.Size(1066, 263);
+            this.tpOverview.Size = new System.Drawing.Size(1066, 314);
             this.tpOverview.TabIndex = 0;
             this.tpOverview.Text = "Overview";
             this.tpOverview.UseVisualStyleBackColor = true;
@@ -974,7 +973,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpCharts.RowCount = 2;
             this.tlpCharts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpCharts.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpCharts.Size = new System.Drawing.Size(1050, 247);
+            this.tlpCharts.Size = new System.Drawing.Size(1050, 298);
             this.tlpCharts.TabIndex = 0;
             // 
             // fpCodeBar
@@ -983,7 +982,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.fpCodeBar.Location = new System.Drawing.Point(0, 0);
             this.fpCodeBar.Margin = new System.Windows.Forms.Padding(0, 0, 8, 8);
             this.fpCodeBar.Name = "fpCodeBar";
-            this.fpCodeBar.Size = new System.Drawing.Size(517, 115);
+            this.fpCodeBar.Size = new System.Drawing.Size(517, 141);
             this.fpCodeBar.TabIndex = 0;
             // 
             // fpPareto
@@ -992,25 +991,25 @@ namespace Project_LBTToolBox.Views.Alarms
             this.fpPareto.Location = new System.Drawing.Point(533, 0);
             this.fpPareto.Margin = new System.Windows.Forms.Padding(8, 0, 0, 8);
             this.fpPareto.Name = "fpPareto";
-            this.fpPareto.Size = new System.Drawing.Size(517, 115);
+            this.fpPareto.Size = new System.Drawing.Size(517, 141);
             this.fpPareto.TabIndex = 1;
             // 
             // fpMachineBar
             // 
             this.fpMachineBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpMachineBar.Location = new System.Drawing.Point(0, 131);
+            this.fpMachineBar.Location = new System.Drawing.Point(0, 157);
             this.fpMachineBar.Margin = new System.Windows.Forms.Padding(0, 8, 8, 0);
             this.fpMachineBar.Name = "fpMachineBar";
-            this.fpMachineBar.Size = new System.Drawing.Size(517, 116);
+            this.fpMachineBar.Size = new System.Drawing.Size(517, 141);
             this.fpMachineBar.TabIndex = 2;
             // 
             // fpDailyTrend
             // 
             this.fpDailyTrend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpDailyTrend.Location = new System.Drawing.Point(533, 131);
+            this.fpDailyTrend.Location = new System.Drawing.Point(533, 157);
             this.fpDailyTrend.Margin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.fpDailyTrend.Name = "fpDailyTrend";
-            this.fpDailyTrend.Size = new System.Drawing.Size(517, 116);
+            this.fpDailyTrend.Size = new System.Drawing.Size(517, 141);
             this.fpDailyTrend.TabIndex = 3;
             // 
             // tpPattern
@@ -1019,7 +1018,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tpPattern.Location = new System.Drawing.Point(4, 31);
             this.tpPattern.Name = "tpPattern";
             this.tpPattern.Padding = new System.Windows.Forms.Padding(8);
-            this.tpPattern.Size = new System.Drawing.Size(1072, 267);
+            this.tpPattern.Size = new System.Drawing.Size(1066, 270);
             this.tpPattern.TabIndex = 1;
             this.tpPattern.Text = "Time Pattern";
             this.tpPattern.UseVisualStyleBackColor = true;
@@ -1030,7 +1029,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.fpHourHistogram.Location = new System.Drawing.Point(8, 8);
             this.fpHourHistogram.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.fpHourHistogram.Name = "fpHourHistogram";
-            this.fpHourHistogram.Size = new System.Drawing.Size(1056, 251);
+            this.fpHourHistogram.Size = new System.Drawing.Size(1050, 254);
             this.fpHourHistogram.TabIndex = 0;
             // 
             // splitData
@@ -1049,7 +1048,7 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             this.splitData.Panel2.Controls.Add(this.gbAlarmDetails);
             this.splitData.Panel2MinSize = 420;
-            this.splitData.Size = new System.Drawing.Size(1074, 248);
+            this.splitData.Size = new System.Drawing.Size(1074, 245);
             this.splitData.SplitterDistance = 350;
             this.splitData.TabIndex = 0;
             // 
@@ -1061,7 +1060,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbWarnCode.Location = new System.Drawing.Point(0, 0);
             this.gbWarnCode.Name = "gbWarnCode";
             this.gbWarnCode.Padding = new System.Windows.Forms.Padding(10, 8, 10, 10);
-            this.gbWarnCode.Size = new System.Drawing.Size(350, 248);
+            this.gbWarnCode.Size = new System.Drawing.Size(350, 245);
             this.gbWarnCode.TabIndex = 0;
             this.gbWarnCode.TabStop = false;
             this.gbWarnCode.Text = "Problem Code Dictionary";
@@ -1076,9 +1075,9 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpWarnCode.Location = new System.Drawing.Point(10, 32);
             this.tlpWarnCode.Name = "tlpWarnCode";
             this.tlpWarnCode.RowCount = 2;
-            this.tlpWarnCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlpWarnCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tlpWarnCode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpWarnCode.Size = new System.Drawing.Size(330, 206);
+            this.tlpWarnCode.Size = new System.Drawing.Size(330, 203);
             this.tlpWarnCode.TabIndex = 0;
             // 
             // panelWarnCodeSearch
@@ -1089,7 +1088,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.panelWarnCodeSearch.Location = new System.Drawing.Point(0, 0);
             this.panelWarnCodeSearch.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.panelWarnCodeSearch.Name = "panelWarnCodeSearch";
-            this.panelWarnCodeSearch.Size = new System.Drawing.Size(330, 36);
+            this.panelWarnCodeSearch.Size = new System.Drawing.Size(330, 37);
             this.panelWarnCodeSearch.TabIndex = 0;
             // 
             // lblWarnCodeSearch
@@ -1104,16 +1103,14 @@ namespace Project_LBTToolBox.Views.Alarms
             // 
             // panelWarnCodeSearchInput
             // 
-            this.panelWarnCodeSearchInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWarnCodeSearchInput.BackColor = System.Drawing.Color.White;
             this.panelWarnCodeSearchInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWarnCodeSearchInput.Controls.Add(this.txtWarnCodeSearch);
             this.panelWarnCodeSearchInput.Controls.Add(this.pbWarnCodeSearchClear);
-            this.panelWarnCodeSearchInput.Location = new System.Drawing.Point(72, 1);
+            this.panelWarnCodeSearchInput.Location = new System.Drawing.Point(72, 3);
             this.panelWarnCodeSearchInput.Name = "panelWarnCodeSearchInput";
             this.panelWarnCodeSearchInput.Padding = new System.Windows.Forms.Padding(8, 6, 4, 6);
-            this.panelWarnCodeSearchInput.Size = new System.Drawing.Size(388, 32);
+            this.panelWarnCodeSearchInput.Size = new System.Drawing.Size(255, 32);
             this.panelWarnCodeSearchInput.TabIndex = 1;
             // 
             // txtWarnCodeSearch
@@ -1123,7 +1120,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.txtWarnCodeSearch.Font = new System.Drawing.Font("微軟正黑體", 9.8F);
             this.txtWarnCodeSearch.Location = new System.Drawing.Point(8, 6);
             this.txtWarnCodeSearch.Name = "txtWarnCodeSearch";
-            this.txtWarnCodeSearch.Size = new System.Drawing.Size(352, 22);
+            this.txtWarnCodeSearch.Size = new System.Drawing.Size(219, 22);
             this.txtWarnCodeSearch.TabIndex = 0;
             // 
             // pbWarnCodeSearchClear
@@ -1131,7 +1128,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.pbWarnCodeSearchClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbWarnCodeSearchClear.Dock = System.Windows.Forms.DockStyle.Right;
             this.pbWarnCodeSearchClear.Image = global::Project_LBTToolBox.Properties.Resources.Cross_mark_icon_in_red;
-            this.pbWarnCodeSearchClear.Location = new System.Drawing.Point(360, 6);
+            this.pbWarnCodeSearchClear.Location = new System.Drawing.Point(227, 6);
             this.pbWarnCodeSearchClear.Name = "pbWarnCodeSearchClear";
             this.pbWarnCodeSearchClear.Size = new System.Drawing.Size(22, 18);
             this.pbWarnCodeSearchClear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1145,14 +1142,14 @@ namespace Project_LBTToolBox.Views.Alarms
             this.dgvWareCode.AllowUserToResizeRows = false;
             this.dgvWareCode.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWareCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWareCode.Location = new System.Drawing.Point(3, 45);
+            this.dgvWareCode.Location = new System.Drawing.Point(3, 46);
             this.dgvWareCode.MultiSelect = false;
             this.dgvWareCode.Name = "dgvWareCode";
             this.dgvWareCode.ReadOnly = true;
             this.dgvWareCode.RowHeadersVisible = false;
             this.dgvWareCode.RowHeadersWidth = 51;
             this.dgvWareCode.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWareCode.Size = new System.Drawing.Size(324, 158);
+            this.dgvWareCode.Size = new System.Drawing.Size(324, 154);
             this.dgvWareCode.TabIndex = 1;
             // 
             // gbAlarmDetails
@@ -1163,7 +1160,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.gbAlarmDetails.Location = new System.Drawing.Point(0, 0);
             this.gbAlarmDetails.Name = "gbAlarmDetails";
             this.gbAlarmDetails.Padding = new System.Windows.Forms.Padding(10, 8, 10, 10);
-            this.gbAlarmDetails.Size = new System.Drawing.Size(720, 248);
+            this.gbAlarmDetails.Size = new System.Drawing.Size(720, 245);
             this.gbAlarmDetails.TabIndex = 0;
             this.gbAlarmDetails.TabStop = false;
             this.gbAlarmDetails.Text = "Alarm Records";
@@ -1175,7 +1172,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.panelDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDetails.Location = new System.Drawing.Point(10, 32);
             this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(700, 206);
+            this.panelDetails.Size = new System.Drawing.Size(700, 203);
             this.panelDetails.TabIndex = 0;
             // 
             // dgvAlarmTable
@@ -1192,14 +1189,14 @@ namespace Project_LBTToolBox.Views.Alarms
             this.dgvAlarmTable.RowHeadersVisible = false;
             this.dgvAlarmTable.RowHeadersWidth = 51;
             this.dgvAlarmTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlarmTable.Size = new System.Drawing.Size(700, 162);
+            this.dgvAlarmTable.Size = new System.Drawing.Size(700, 159);
             this.dgvAlarmTable.TabIndex = 0;
             // 
             // panelPaging
             // 
             this.panelPaging.Controls.Add(this.tlpPaging);
             this.panelPaging.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelPaging.Location = new System.Drawing.Point(0, 162);
+            this.panelPaging.Location = new System.Drawing.Point(0, 159);
             this.panelPaging.Name = "panelPaging";
             this.panelPaging.Size = new System.Drawing.Size(700, 44);
             this.panelPaging.TabIndex = 1;
@@ -1220,7 +1217,7 @@ namespace Project_LBTToolBox.Views.Alarms
             this.tlpPaging.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpPaging.Location = new System.Drawing.Point(0, 0);
             this.tlpPaging.Name = "tlpPaging";
-            this.tlpPaging.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpPaging.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tlpPaging.Size = new System.Drawing.Size(700, 44);
             this.tlpPaging.TabIndex = 0;
             // 
@@ -1396,9 +1393,6 @@ namespace Project_LBTToolBox.Views.Alarms
         private System.Windows.Forms.Button btnMachinesClear;
         private System.Windows.Forms.Panel panelCodeFilter;
         private System.Windows.Forms.Label lblWarnCodeFilter;
-        private System.Windows.Forms.Panel panelWarnCodeFilterInput;
-        private System.Windows.Forms.TextBox txtWarnCodeFilter;
-        private System.Windows.Forms.PictureBox pbWarnCodeFilterClear;
         private System.Windows.Forms.Panel panelFilterHint;
         private System.Windows.Forms.Label lblFilterHint;
         private System.Windows.Forms.Panel panelRight;
@@ -1448,5 +1442,8 @@ namespace Project_LBTToolBox.Views.Alarms
         private System.Windows.Forms.Label lblPagingStatus;
         private System.Windows.Forms.TextBox txtJumpPage;
         private System.Windows.Forms.Button btnJumpPage;
+        private System.Windows.Forms.Panel panelWarnCodeFilterInput;
+        private System.Windows.Forms.TextBox txtWarnCodeFilter;
+        private System.Windows.Forms.PictureBox pbWarnCodeFilterClear;
     }
 }
