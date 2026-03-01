@@ -19,19 +19,21 @@ namespace Project_LBTToolBox.Services.Alarms
             // 基本設定
             dgv.AutoGenerateColumns = false;
             dgv.Columns.Clear();
-            dgv.ReadOnly = false;
+            dgv.ReadOnly = true;
             dgv.AllowUserToAddRows = false;
             dgv.AllowUserToDeleteRows = false;
+            dgv.MultiSelect = false;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.ScrollBars = ScrollBars.Both;
             dgv.RowTemplate.Height = 22;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
             // 表頭高度也固定（可選）
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             // 左側行頭（箭頭那欄）固定或關掉
-            dgv.RowHeadersVisible = true; // 若不需要可設為 false
-            dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgv.RowHeadersWidth = 30;
+            dgv.RowHeadersVisible = false;
             dgv.ColumnHeadersHeight = 30;
 
             // 時間
@@ -39,7 +41,7 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Timestamp",
                 HeaderText = "時間",
-                Width = 200,
+                Width = 170,
                 DefaultCellStyle = { Format = "yyyy-MM-dd HH:mm:ss" }
             });
 
@@ -48,7 +50,7 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Machine",
                 HeaderText = "機台",
-                Width = 80
+                Width = 90
             });
 
             // Level
@@ -56,7 +58,7 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Level",
                 HeaderText = "等級",
-                Width = 80
+                Width = 70
             });
 
             // Code
@@ -64,7 +66,7 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Code",
                 HeaderText = "代碼",
-                Width = 80
+                Width = 90
             });
 
             // Message
@@ -102,6 +104,7 @@ namespace Project_LBTToolBox.Services.Alarms
             dgv.ReadOnly = true;
             dgv.AllowUserToAddRows = false;
             dgv.AllowUserToDeleteRows = false;
+            dgv.MultiSelect = false;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // ❗關鍵：不要自動撐滿、不要自動換行、固定列高、允許卷動
@@ -114,9 +117,7 @@ namespace Project_LBTToolBox.Services.Alarms
             // 表頭高度也固定（可選）
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             // 左側行頭（箭頭那欄）固定或關掉
-            dgv.RowHeadersVisible = true; // 若不需要可設為 false
-            dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgv.RowHeadersWidth = 30;
+            dgv.RowHeadersVisible = false;
             dgv.ColumnHeadersHeight = 30;
 
             // Code 欄
@@ -124,7 +125,7 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Code",
                 HeaderText = "代碼",
-                Width = 80,
+                Width = 90,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             });
 
@@ -133,8 +134,8 @@ namespace Project_LBTToolBox.Services.Alarms
             {
                 DataPropertyName = "Message",
                 HeaderText = "規則 / 範例訊息",
-                Width = 800,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                MinimumWidth = 240,
                 DefaultCellStyle = { WrapMode = DataGridViewTriState.False }
             });
 

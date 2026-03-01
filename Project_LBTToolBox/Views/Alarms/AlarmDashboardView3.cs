@@ -1,4 +1,5 @@
 using ScottPlot;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Project_LBTToolBox.Views.Alarms
@@ -8,6 +9,41 @@ namespace Project_LBTToolBox.Views.Alarms
         public AlarmDashboardView3()
         {
             InitializeComponent();
+            ConfigureVisualDefaults();
+        }
+
+        private void ConfigureVisualDefaults()
+        {
+            splitMain.SplitterWidth = 6;
+            splitRight.SplitterWidth = 6;
+            splitData.SplitterWidth = 6;
+
+            ConfigureGridAppearance(dgvWareCode);
+            ConfigureGridAppearance(dgvAlarmTable);
+        }
+
+        private void ConfigureGridAppearance(DataGridView grid)
+        {
+            if (grid == null)
+                return;
+
+            grid.BorderStyle = BorderStyle.None;
+            grid.BackgroundColor = Color.White;
+            grid.GridColor = Color.FromArgb(223, 228, 235);
+            grid.EnableHeadersVisualStyles = false;
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(244, 247, 250);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(35, 45, 55);
+            grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 236, 242);
+            grid.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(35, 45, 55);
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 10.2F, FontStyle.Bold);
+            grid.DefaultCellStyle.BackColor = Color.White;
+            grid.DefaultCellStyle.ForeColor = Color.FromArgb(45, 55, 65);
+            grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 234, 248);
+            grid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(20, 25, 30);
+            grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(249, 251, 252);
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.MultiSelect = false;
         }
 
         public RadioButton RdbRemote => rdbRemote;
