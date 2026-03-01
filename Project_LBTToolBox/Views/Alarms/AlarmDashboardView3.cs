@@ -7,10 +7,6 @@ namespace Project_LBTToolBox.Views.Alarms
 {
     public partial class AlarmDashboardView3 : UserControl
     {
-        private TableLayoutPanel sourceLayout;
-        private TableLayoutPanel sourceActionsPanel;
-        private FlowLayoutPanel sourceModePanel;
-
         public AlarmDashboardView3()
         {
             InitializeComponent();
@@ -19,180 +15,16 @@ namespace Project_LBTToolBox.Views.Alarms
 
         private void ConfigureVisualDefaults()
         {
-            tlpRoot.RowStyles[0].Height = 156F;
             splitMain.SplitterWidth = 6;
             splitRight.SplitterWidth = 6;
             splitData.SplitterWidth = 6;
-            gbSource.Padding = new Padding(10, 12, 10, 10);
-
-            BuildAdaptiveSourceLayout();
-            BuildEmbeddedTextInputs();
+            splitMain.SplitterDistance = 300;
+            splitRight.SplitterDistance = 302;
+            splitData.SplitterDistance = 350;
             ConfigureGridAppearance(dgvWareCode);
             ConfigureGridAppearance(dgvAlarmTable);
             ConfigureKpiCards();
             HookDictionarySearchEvents();
-        }
-
-        private void BuildAdaptiveSourceLayout()
-        {
-            sourceLayout = new TableLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                Margin = new Padding(0),
-                Padding = new Padding(0),
-                ColumnCount = 5,
-                RowCount = 3
-            };
-            sourceLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
-            sourceLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            sourceLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
-            sourceLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
-            sourceLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 324F));
-            sourceLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            sourceLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            sourceLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-
-            sourceModePanel = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.LeftToRight,
-                WrapContents = false,
-                Margin = new Padding(0, 2, 8, 0),
-                Padding = new Padding(0)
-            };
-            rdbRemote.Margin = new Padding(0, 2, 12, 0);
-            rdbLocal.Margin = new Padding(0, 2, 0, 0);
-            sourceModePanel.Controls.Add(rdbRemote);
-            sourceModePanel.Controls.Add(rdbLocal);
-
-            sourceActionsPanel = new TableLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                Margin = new Padding(8, 0, 0, 0),
-                Padding = new Padding(0),
-                ColumnCount = 1,
-                RowCount = 2
-            };
-            sourceActionsPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            sourceActionsPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            sourceActionsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-
-            ConfigureSourceButton(btnApply, 110);
-            ConfigureSourceButton(btnExportWarnCodesCsv, 96);
-            ConfigureSourceButton(btnExportAlarmsCsv, 96);
-            ConfigureSourceButton(btnExportAllAlarmsCsv, 96);
-            btnApply.Height = 34;
-            btnApply.Dock = DockStyle.Left;
-            btnExportWarnCodesCsv.Height = 32;
-            btnExportAlarmsCsv.Height = 32;
-            btnExportAllAlarmsCsv.Height = 32;
-
-            gbExportActions.Dock = DockStyle.Fill;
-            gbExportActions.Text = "Export";
-            gbExportActions.Font = new Font("微軟正黑體", 9.8F, FontStyle.Bold);
-            gbExportActions.Padding = new Padding(8, 18, 8, 6);
-            gbExportActions.Margin = new Padding(0);
-
-            sourceActionsPanel.Controls.Add(btnApply, 0, 0);
-            sourceActionsPanel.Controls.Add(gbExportActions, 0, 1);
-
-            ConfigureSourceLabel(lblRemotePath, "Remote NAS");
-            ConfigureSourceLabel(lblLocalPath, "Local Folder");
-            txtRemotePath.Dock = DockStyle.Fill;
-            txtLocalPath.Dock = DockStyle.Fill;
-            txtRemotePath.Margin = new Padding(0, 1, 0, 1);
-            txtLocalPath.Margin = new Padding(0, 1, 0, 1);
-            btnBrowseRemote.Dock = DockStyle.Fill;
-            btnBrowseLocal.Dock = DockStyle.Fill;
-            btnTestRemote.Dock = DockStyle.Fill;
-            btnBrowseRemote.Margin = new Padding(6, 0, 0, 0);
-            btnBrowseLocal.Margin = new Padding(6, 0, 0, 0);
-            btnTestRemote.Margin = new Padding(6, 0, 0, 0);
-
-            var lblSourceMode = new Label
-            {
-                Text = "Source Mode",
-                Dock = DockStyle.Fill,
-                AutoSize = false,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Font = new Font("微軟正黑體", 10.2F, FontStyle.Bold),
-                Margin = new Padding(0)
-            };
-
-            sourceLayout.Controls.Add(lblSourceMode, 0, 0);
-            sourceLayout.Controls.Add(sourceModePanel, 1, 0);
-            sourceLayout.SetColumnSpan(sourceModePanel, 3);
-            sourceLayout.Controls.Add(sourceActionsPanel, 4, 0);
-            sourceLayout.SetRowSpan(sourceActionsPanel, 3);
-
-            sourceLayout.Controls.Add(lblRemotePath, 0, 1);
-            sourceLayout.Controls.Add(txtRemotePath, 1, 1);
-            sourceLayout.Controls.Add(btnBrowseRemote, 2, 1);
-            sourceLayout.Controls.Add(btnTestRemote, 3, 1);
-
-            sourceLayout.Controls.Add(lblLocalPath, 0, 2);
-            sourceLayout.Controls.Add(txtLocalPath, 1, 2);
-            sourceLayout.Controls.Add(btnBrowseLocal, 2, 2);
-
-            gbSource.Controls.Clear();
-            gbSource.Controls.Add(sourceLayout);
-        }
-
-        private void ConfigureSourceLabel(Label label, string text)
-        {
-            label.AutoSize = false;
-            label.Text = text;
-            label.Dock = DockStyle.Fill;
-            label.TextAlign = ContentAlignment.MiddleLeft;
-            label.Font = new Font("微軟正黑體", 10.2F, FontStyle.Bold);
-            label.Margin = new Padding(0);
-        }
-
-        private void ConfigureSourceButton(Button button, int width)
-        {
-            button.Width = width;
-            button.Margin = new Padding(0, 0, 6, 6);
-        }
-
-        private void BuildEmbeddedTextInputs()
-        {
-            BuildEmbeddedTextInput(panelCodeFilter, txtWarnCodeFilter, pbWarnCodeFilterClear, new Point(118, 8), 148, 32);
-            BuildEmbeddedTextInput(panelWarnCodeSearch, txtWarnCodeSearch, pbWarnCodeSearchClear, new Point(77, 7), 266, 28);
-        }
-
-        private void BuildEmbeddedTextInput(Control parent, TextBox textBox, PictureBox clearIcon, Point location, int width, int height)
-        {
-            if (parent == null || textBox == null || clearIcon == null)
-                return;
-
-            Panel container = new Panel
-            {
-                Location = location,
-                Size = new Size(width, height),
-                BorderStyle = BorderStyle.FixedSingle,
-                BackColor = Color.White,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-            };
-
-            parent.Controls.Remove(textBox);
-            parent.Controls.Remove(clearIcon);
-
-            textBox.BorderStyle = BorderStyle.None;
-            textBox.Location = new Point(8, Math.Max(6, (height - textBox.PreferredHeight) / 2));
-            textBox.Width = width - 34;
-            textBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox.BackColor = Color.White;
-
-            clearIcon.Parent = container;
-            clearIcon.BackColor = Color.White;
-            clearIcon.Size = new Size(16, 16);
-            clearIcon.Location = new Point(container.Width - 22, (height - clearIcon.Height) / 2);
-            clearIcon.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            container.Controls.Add(textBox);
-            container.Controls.Add(clearIcon);
-            parent.Controls.Add(container);
-            container.BringToFront();
         }
 
         private void HookDictionarySearchEvents()
