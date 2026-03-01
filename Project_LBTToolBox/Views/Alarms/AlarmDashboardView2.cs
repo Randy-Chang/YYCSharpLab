@@ -25,6 +25,7 @@ namespace Project_LBTToolBox.Views.Alarms
         public Button BtnMachinesAll => btnMachinesAll;
         public Button BtnMachinesClear => btnMachinesClear;
         public TextBox TxtWareCodeFilter => txtWareCodeFilter;
+        public GroupBox GbWarnCode => gbWarnCode;
 
         public Button BtnApply => btnApply;
 

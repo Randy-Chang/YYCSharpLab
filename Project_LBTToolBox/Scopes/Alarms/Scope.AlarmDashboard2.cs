@@ -15,6 +15,7 @@ namespace Project_LBTToolBox.Scopes
     {
         static AlarmDashboardView2 alarmDashboardView2;
         static string logMainFolderPath;
+        Dictionary<string, string> currentWarnCodeWithMessage = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         AlarmStatistics alarmStatistics;
 
         List<string> ignoreKeyword = new List<string>
@@ -36,6 +37,8 @@ namespace Project_LBTToolBox.Scopes
             alarmDashboardView2.BtnApply.Click += AlarmDashboardView2_BtnApply_Click;
             alarmDashboardView2.BtnMachinesAll.Click += AlarmDashboardView2_BtnMachinesAll_Click;
             alarmDashboardView2.BtnMachinesClear.Click += AlarmDashboardView2_BtnMachinesClear_Click;
+            alarmDashboardView2.GbWarnCode.DoubleClick += AlarmDashboardView2_WarnCode_DoubleClick;
+            alarmDashboardView2.DgvWareCode.DoubleClick += AlarmDashboardView2_WarnCode_DoubleClick;
         }
 
         private void UpdateMachineList(string rootPath, CheckedListBox checkedListBox)
@@ -113,6 +116,20 @@ namespace Project_LBTToolBox.Scopes
             {
                 checkedListBox.SetItemChecked(i, false);
             }
+        }
+
+        private void AlarmDashboardView2_WarnCode_DoubleClick(object sender, EventArgs e)
+        {
+            if (currentWarnCodeWithMessage == null || currentWarnCodeWithMessage.Count == 0)
+                return;
+
+            WarnCodeViewerForm viewer = new WarnCodeViewerForm(currentWarnCodeWithMessage);
+            Form owner = alarmDashboardView2.FindForm();
+
+            if (owner != null)
+                viewer.Show(owner);
+            else
+                viewer.Show();
         }
 
         /// <summary>
@@ -193,6 +210,8 @@ namespace Project_LBTToolBox.Scopes
                     .Where(kv => string.Equals(kv.Key, selectedWareCode, StringComparison.OrdinalIgnoreCase))
                     .ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.OrdinalIgnoreCase);
             }
+
+            currentWarnCodeWithMessage = new Dictionary<string, string>(warnCodeWithMessage, StringComparer.OrdinalIgnoreCase);
 
             // 顯示在 DataGridView - Log Table
             DataGridView dgvLogTable = view2.DgvAlarmTable;

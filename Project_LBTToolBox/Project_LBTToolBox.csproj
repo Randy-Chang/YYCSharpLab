@@ -150,6 +150,9 @@
     <Compile Include="Views\Alarms\AlarmDashboardView2.Designer.cs">
       <DependentUpon>AlarmDashboardView2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Alarms\WarnCodeViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Alarms\AlarmSettingsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
