@@ -1,4 +1,5 @@
 using ScottPlot;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,12 +8,8 @@ namespace Project_LBTToolBox.Views.Alarms
     public partial class AlarmDashboardView3 : UserControl
     {
         private TableLayoutPanel sourceLayout;
-        private FlowLayoutPanel sourceActionsPanel;
+        private TableLayoutPanel sourceActionsPanel;
         private FlowLayoutPanel sourceModePanel;
-        private Panel warnCodeSearchPanel;
-        private Label lblWarnCodeSearch;
-        private TextBox txtWarnCodeSearch;
-        private Button btnWarnCodeSearchClear;
 
         public AlarmDashboardView3()
         {
@@ -29,11 +26,11 @@ namespace Project_LBTToolBox.Views.Alarms
             gbSource.Padding = new Padding(10, 12, 10, 10);
 
             BuildAdaptiveSourceLayout();
-            BuildWarnCodeDictionaryLayout();
-
+            BuildEmbeddedTextInputs();
             ConfigureGridAppearance(dgvWareCode);
             ConfigureGridAppearance(dgvAlarmTable);
             ConfigureKpiCards();
+            HookDictionarySearchEvents();
         }
 
         private void BuildAdaptiveSourceLayout()
@@ -68,27 +65,36 @@ namespace Project_LBTToolBox.Views.Alarms
             sourceModePanel.Controls.Add(rdbRemote);
             sourceModePanel.Controls.Add(rdbLocal);
 
-            sourceActionsPanel = new FlowLayoutPanel
+            sourceActionsPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.LeftToRight,
-                WrapContents = true,
                 Margin = new Padding(8, 0, 0, 0),
-                Padding = new Padding(0)
+                Padding = new Padding(0),
+                ColumnCount = 1,
+                RowCount = 2
             };
+            sourceActionsPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            sourceActionsPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            sourceActionsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 
             ConfigureSourceButton(btnApply, 110);
             ConfigureSourceButton(btnExportWarnCodesCsv, 96);
             ConfigureSourceButton(btnExportAlarmsCsv, 96);
             ConfigureSourceButton(btnExportAllAlarmsCsv, 96);
             btnApply.Height = 34;
+            btnApply.Dock = DockStyle.Left;
             btnExportWarnCodesCsv.Height = 32;
             btnExportAlarmsCsv.Height = 32;
             btnExportAllAlarmsCsv.Height = 32;
-            sourceActionsPanel.Controls.Add(btnApply);
-            sourceActionsPanel.Controls.Add(btnExportWarnCodesCsv);
-            sourceActionsPanel.Controls.Add(btnExportAlarmsCsv);
-            sourceActionsPanel.Controls.Add(btnExportAllAlarmsCsv);
+
+            gbExportActions.Dock = DockStyle.Fill;
+            gbExportActions.Text = "Export";
+            gbExportActions.Font = new Font("微軟正黑體", 9.8F, FontStyle.Bold);
+            gbExportActions.Padding = new Padding(8, 18, 8, 6);
+            gbExportActions.Margin = new Padding(0);
+
+            sourceActionsPanel.Controls.Add(btnApply, 0, 0);
+            sourceActionsPanel.Controls.Add(gbExportActions, 0, 1);
 
             ConfigureSourceLabel(lblRemotePath, "Remote NAS");
             ConfigureSourceLabel(lblLocalPath, "Local Folder");
@@ -148,51 +154,71 @@ namespace Project_LBTToolBox.Views.Alarms
             button.Margin = new Padding(0, 0, 6, 6);
         }
 
-        private void BuildWarnCodeDictionaryLayout()
+        private void BuildEmbeddedTextInputs()
         {
-            warnCodeSearchPanel = new Panel
+            BuildEmbeddedTextInput(panelCodeFilter, txtWarnCodeFilter, pbWarnCodeFilterClear, new Point(118, 8), 148, 32);
+            BuildEmbeddedTextInput(panelWarnCodeSearch, txtWarnCodeSearch, pbWarnCodeSearchClear, new Point(77, 7), 266, 28);
+        }
+
+        private void BuildEmbeddedTextInput(Control parent, TextBox textBox, PictureBox clearIcon, Point location, int width, int height)
+        {
+            if (parent == null || textBox == null || clearIcon == null)
+                return;
+
+            Panel container = new Panel
             {
-                Dock = DockStyle.Top,
-                Height = 40,
-                Padding = new Padding(8, 6, 8, 4)
+                Location = location,
+                Size = new Size(width, height),
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
 
-            lblWarnCodeSearch = new Label
-            {
-                Text = "Search",
-                AutoSize = false,
-                Width = 58,
-                Dock = DockStyle.Left,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Font = new Font("微軟正黑體", 9.8F, FontStyle.Bold)
-            };
+            parent.Controls.Remove(textBox);
+            parent.Controls.Remove(clearIcon);
 
-            btnWarnCodeSearchClear = new Button
-            {
-                Text = "Clear",
-                Dock = DockStyle.Right,
-                Width = 64,
-                Font = new Font("微軟正黑體", 9F)
-            };
-            btnWarnCodeSearchClear.Click += BtnWarnCodeSearchClear_Click;
+            textBox.BorderStyle = BorderStyle.None;
+            textBox.Location = new Point(8, Math.Max(6, (height - textBox.PreferredHeight) / 2));
+            textBox.Width = width - 34;
+            textBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox.BackColor = Color.White;
 
-            txtWarnCodeSearch = new TextBox
-            {
-                Dock = DockStyle.Fill,
-                Font = new Font("微軟正黑體", 9.8F),
-                BorderStyle = BorderStyle.FixedSingle
-            };
+            clearIcon.Parent = container;
+            clearIcon.BackColor = Color.White;
+            clearIcon.Size = new Size(16, 16);
+            clearIcon.Location = new Point(container.Width - 22, (height - clearIcon.Height) / 2);
+            clearIcon.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+            container.Controls.Add(textBox);
+            container.Controls.Add(clearIcon);
+            parent.Controls.Add(container);
+            container.BringToFront();
+        }
+
+        private void HookDictionarySearchEvents()
+        {
+            pbWarnCodeFilterClear.Click += PbWarnCodeFilterClear_Click;
+            pbWarnCodeSearchClear.Click += PbWarnCodeSearchClear_Click;
             txtWarnCodeSearch.TextChanged += TxtWarnCodeSearch_TextChanged;
-
-            warnCodeSearchPanel.Controls.Add(txtWarnCodeSearch);
-            warnCodeSearchPanel.Controls.Add(btnWarnCodeSearchClear);
-            warnCodeSearchPanel.Controls.Add(lblWarnCodeSearch);
-
-            gbWarnCode.Controls.Clear();
-            gbWarnCode.Controls.Add(dgvWareCode);
-            gbWarnCode.Controls.Add(warnCodeSearchPanel);
-            dgvWareCode.Dock = DockStyle.Fill;
             dgvWareCode.DataBindingComplete += DgvWareCode_DataBindingComplete;
+            ConfigureClearIcon(pbWarnCodeFilterClear);
+            ConfigureClearIcon(pbWarnCodeSearchClear);
+        }
+
+        private void ConfigureClearIcon(PictureBox pictureBox)
+        {
+            if (pictureBox == null)
+                return;
+
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.BackColor = Color.White;
+            pictureBox.Cursor = Cursors.Hand;
+        }
+
+        private void PbWarnCodeFilterClear_Click(object sender, System.EventArgs e)
+        {
+            txtWarnCodeFilter.Text = string.Empty;
+            txtWarnCodeFilter.Focus();
         }
 
         private void TxtWarnCodeSearch_TextChanged(object sender, System.EventArgs e)
@@ -200,9 +226,10 @@ namespace Project_LBTToolBox.Views.Alarms
             ApplyWarnCodeSearchFilter();
         }
 
-        private void BtnWarnCodeSearchClear_Click(object sender, System.EventArgs e)
+        private void PbWarnCodeSearchClear_Click(object sender, System.EventArgs e)
         {
             txtWarnCodeSearch.Text = string.Empty;
+            txtWarnCodeSearch.Focus();
         }
 
         private void DgvWareCode_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -212,10 +239,10 @@ namespace Project_LBTToolBox.Views.Alarms
 
         private void ApplyWarnCodeSearchFilter()
         {
-            if (dgvWareCode.Rows.Count == 0)
+            if (dgvWareCode.Rows.Count == 0 || txtWarnCodeSearch == null)
                 return;
 
-            string keyword = (txtWarnCodeSearch?.Text ?? string.Empty).Trim();
+            string keyword = (txtWarnCodeSearch.Text ?? string.Empty).Trim();
             bool hasKeyword = keyword.Length > 0;
             dgvWareCode.CurrentCell = null;
 
@@ -304,7 +331,9 @@ namespace Project_LBTToolBox.Views.Alarms
         public Button BtnMachinesAll => btnMachinesAll;
         public Button BtnMachinesClear => btnMachinesClear;
         public TextBox TxtWarnCodeFilter => txtWarnCodeFilter;
+        public PictureBox PbxWarnCodeFilterClear => pbWarnCodeFilterClear;
         public TextBox TxtWarnCodeSearch => txtWarnCodeSearch;
+        public PictureBox PbxWarnCodeSearchClear => pbWarnCodeSearchClear;
         public GroupBox GbWarnCode => gbWarnCode;
         public DataGridView DgvWareCode => dgvWareCode;
         public DataGridView DgvAlarmTable => dgvAlarmTable;

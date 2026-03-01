@@ -185,6 +185,8 @@ namespace Project_LBTToolBox.Scopes
             alarmDashboardView3.ClbMachines.Enabled = !isBusy;
             alarmDashboardView3.CkbDateRangeEnable.Enabled = !isBusy;
             alarmDashboardView3.TxtWarnCodeFilter.Enabled = !isBusy;
+            alarmDashboardView3.PbxWarnCodeFilterClear.Enabled = !isBusy;
+            alarmDashboardView3.PbxWarnCodeSearchClear.Enabled = !isBusy;
             alarmDashboardView3.TxtJumpPage.Enabled = !isBusy;
             alarmDashboardView3.UseWaitCursor = isBusy;
             alarmDashboardView3.LblSourceStatus.Text = statusText;
